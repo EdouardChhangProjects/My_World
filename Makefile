@@ -5,7 +5,8 @@
 ## Makefile to build libmy.a
 ##
 
-override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib
+override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib \
+-lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
 override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr
 
 TESTSRC = tests/test_make.c
@@ -16,11 +17,11 @@ MAINSRC = main.c
 
 MAINOBJ = $(MAINSRC:.c=.o)
 
-SRC = 
+SRC =
 
 OBJ = $(SRC:.c=.o)
 
-NAME = pgrm_name
+NAME = my_world
 
 all: $(NAME)
 
