@@ -7,7 +7,7 @@
 
 override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib \
 -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
-override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr
+override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr -lm
 
 TESTSRC = tests/test_make.c
 
@@ -17,7 +17,12 @@ MAINSRC = main.c
 
 MAINOBJ = $(MAINSRC:.c=.o)
 
-SRC =
+SRC =	src/handle_errors/check_env.c		\
+		src/handle_errors/print_help.c		\
+		src/my_world/my_world.c				\
+		src/init_elements/init_window.c		\
+		src/isometry/render_map.c			\
+		src/utils/my_calloc.c 				\
 
 OBJ = $(SRC:.c=.o)
 
