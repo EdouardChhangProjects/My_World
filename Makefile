@@ -21,8 +21,10 @@ SRC =	src/handle_errors/check_env.c		\
 		src/handle_errors/print_help.c		\
 		src/my_world/my_world.c				\
 		src/init_elements/init_window.c		\
+		src/init_elements/init_game.c		\
 		src/isometry/render_map.c			\
 		src/utils/my_calloc.c 				\
+		src/framebuffer/framebuffer_utils.c	\
 
 OBJ = $(SRC:.c=.o)
 

@@ -43,23 +43,35 @@
         {00, 00, 00, 00, 00, 00},
     };
 
-    struct framebuffer {
+    typedef struct framebuffer_s {
         unsigned int width;
         unsigned int height;
         sfUint8 *pixels;
         sfTexture *texture;
         sfSprite *sprite;
-    };
+    } framebuffer_t;
 
-    typedef struct framebuffer framebuffer_t;
+    typedef struct wd_game_s {
+        int angle_x;
+        int angle_y;
+        int **map;
+        int map_height;
+        int map_width;
+        framebuffer_t *fb;
+        sfRenderWindow *win;
+    } wd_game_t;
 
     int check_env(char **env);
     int print_help(void);
     sfRenderWindow *render_window(void);
-    int gameloop(void);
-    int render_map(sfRenderWindow* win, framebuffer_t *fb, double angle_x,
-                   double angle_y);
-    framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
+    int gameloop(wd_game_t *game);
+    int render_map(wd_game_t *game);
     void *my_memset(int size, char *str);
+    framebuffer_t *clean_framebuffer(framebuffer_t *fb);
+    framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
+    void framebuffer_destroy(framebuffer_t *framebuffer);
+    void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
+    wd_game_t *init_game(void);
+    int render_map(wd_game_t*game);
 
 #endif //MY_WORLD_H

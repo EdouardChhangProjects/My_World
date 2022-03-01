@@ -7,6 +7,8 @@
 
 #include "my_world.h"
 
+int my_world(void);
+
 int main(int ac, char **av, char **env)
 {
     if (check_env(env) == 84)
@@ -14,6 +16,6 @@ int main(int ac, char **av, char **env)
     if (ac > 1 && av[1][0] == '-' && av[1][1] == 'h')
         return print_help();
     if (ac == 2)
-        return gameloop();
+        return my_world();
     return my_printerr("./my_runner: Invalid arguments\n");
 }
