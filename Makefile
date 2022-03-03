@@ -9,6 +9,19 @@ override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib \
 -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
 override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr -lm
 
+SRC	=	src/framebuffer/framebuffer_utils.c	\
+		src/init_elements/init_window.c		\
+		src/handle_errors/print_help.c		\
+		src/handle_errors/check_env.c		\
+		src/init_elements/init_game.c		\
+		src/isometry/render_map.c		\
+		src/isometry/draw_line.c		\
+		src/my_world/my_world.c			\
+		src/isometry/points.c			\
+		src/utils/my_calloc.c
+
+OBJ = $(SRC:.c=.o)
+
 TESTSRC = tests/test_make.c
 
 TESTOBJ = $(TESTSRC:.c=.o)
@@ -16,17 +29,6 @@ TESTOBJ = $(TESTSRC:.c=.o)
 MAINSRC = main.c
 
 MAINOBJ = $(MAINSRC:.c=.o)
-
-SRC =	src/handle_errors/check_env.c		\
-		src/handle_errors/print_help.c		\
-		src/my_world/my_world.c				\
-		src/init_elements/init_window.c		\
-		src/init_elements/init_game.c		\
-		src/isometry/render_map.c			\
-		src/utils/my_calloc.c 				\
-		src/framebuffer/framebuffer_utils.c	\
-
-OBJ = $(SRC:.c=.o)
 
 NAME = my_world
 

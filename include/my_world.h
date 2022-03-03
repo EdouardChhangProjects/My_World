@@ -35,12 +35,12 @@
     #define MAP_Y 6
 
     static int map[MAP_X][MAP_Y] = {
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
+        {0, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 1, 0},
     };
 
     typedef struct framebuffer_s {
@@ -61,17 +61,22 @@
         sfRenderWindow *win;
     } wd_game_t;
 
-    int check_env(char **env);
-    int print_help(void);
-    sfRenderWindow *render_window(void);
-    int gameloop(wd_game_t *game);
-    int render_map(wd_game_t *game);
-    void *my_memset(int size, char *str);
-    framebuffer_t *clean_framebuffer(framebuffer_t *fb);
-    framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
-    void framebuffer_destroy(framebuffer_t *framebuffer);
-    void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
-    wd_game_t *init_game(void);
-    int render_map(wd_game_t*game);
+int check_env(char **env);
+int print_help(void);
+sfRenderWindow *render_window(void);
+int gameloop(wd_game_t *game);
+int render_map(wd_game_t *game);
+void *my_memset(int size, char *str);
+framebuffer_t *clean_framebuffer(framebuffer_t *fb);
+framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
+void framebuffer_destroy(framebuffer_t *framebuffer);
+void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
+wd_game_t *init_game(void);
+int render_map(wd_game_t*game);
+sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2);
+int draw_lines(wd_game_t *game);
+sfVector2f ***get_points(wd_game_t *game);
+sfVector2f *get_point(int x, int y, int z, wd_game_t *game);
+
 
 #endif //MY_WORLD_H
