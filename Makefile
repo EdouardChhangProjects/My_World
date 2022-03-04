@@ -24,6 +24,8 @@ SRC =	src/handle_errors/check_env.c		\
 		src/init_elements/init_game.c		\
 		src/init_elements/init_text_state.c		\
 		src/isometry/render_map.c			\
+		src/isometry/points.c				\
+		src/isometry/draw_line.c			\
 		src/isometry/draw_spritemap.c 		\
 		src/utils/my_calloc.c 				\
 		src/framebuffer/framebuffer_utils.c	\

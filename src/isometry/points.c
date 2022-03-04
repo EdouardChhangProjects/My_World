@@ -7,11 +7,6 @@
 
 #include "my_world.h"
 
-double to_radiant(double angle)
-{
-    return (double)(angle * M_PI / 180);
-}
-
 sfVector2f *get_point(int x, int y, int z, wd_game_t *game)
 {
     sfVector2f *point = malloc(sizeof(sfVector2f));
@@ -38,15 +33,18 @@ sfVector2f ***get_points(wd_game_t *game)
 {
     int X = 6;
     int Y = 6;
-    sfVector2f ***points = malloc(sizeof(sfVector2f**) * (Y + 1));
+    sfVector2f ***points = malloc(sizeof(sfVector2f **) * (Y + 1));
 
     for (int y = 0; y < Y; ++y) {
-        points[y] = malloc(sizeof(sfVector2f*) * (X + 1));
+        points[y] = malloc(sizeof(sfVector2f *) * (X + 1));
         for (int x = 0; x < X; ++x) {
-            points[y][x] = get_point(x, y, map[x][y], game);
+            points[y][x] = malloc(sizeof(sfVector2f) * 1);
         }
         points[y][X] = NULL;
     }
+    for (int y = 0; y < Y; ++y)
+        for (int x = 0; x < X; ++x)
+            *(points[y][x]) = pos_3d_to_2d(x, y, map[x][y], game);
     points[Y] = NULL;
     return points;
 }

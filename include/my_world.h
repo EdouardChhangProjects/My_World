@@ -113,5 +113,9 @@
     sfVector2f pos_3d_to_2d(int x, int y, int z, wd_game_t *game);
     int draw_spritemap(wd_game_t *game);
     void framebuffer_destroy(framebuffer_t *framebuffer);
+    double to_radiant(double angle);
+    int draw_lines(wd_game_t *game);
+    sfVector2f ***get_points(wd_game_t *game);
+
 
 #endif //MY_WORLD_H
