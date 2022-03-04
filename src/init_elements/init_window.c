@@ -12,7 +12,7 @@ sfRenderWindow *render_window(void)
     sfVideoMode mode = {WIDTH, HEIGHT, 32};
     sfRenderWindow *win = NULL;
 
-    win = sfRenderWindow_create(mode, "My_Runner", sfClose | sfResize, NULL);
+    win = sfRenderWindow_create(mode, "my_world", sfClose, NULL);
     sfRenderWindow_setFramerateLimit(win, FPS);
     if (win == NULL) {
         my_printerr("./my_runner: Failed to create window\n");;

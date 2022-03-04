@@ -34,13 +34,42 @@
     #define MAP_X 6
     #define MAP_Y 6
 
+    typedef enum wd_spritetype {
+        GRASS,
+        SWAMP,
+        ICE,
+        FIRE
+    } wd_spritetype_e;
+
+    static char *wd_spritefile[] = {
+            "assets/BasicGreen.png",
+            "assets/Swampset.png",
+            "assets/IceSet.png",
+            "assets/FireSet.png"
+    };
+
     static int map[MAP_X][MAP_Y] = {
         {00, 00, 00, 00, 00, 00},
         {00, 00, 00, 00, 00, 00},
         {00, 00, 00, 00, 00, 00},
+        {00, 00, 00, 01, 00, 00},
         {00, 00, 00, 00, 00, 00},
         {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
+    };
+
+    static int map_text[MAP_X - 1][MAP_Y - 1] = {
+            {04, 01, 01, 02, 01},
+            {01, 01, 02, 01, 01},
+            {01, 02, 04, 01, 04},
+            {02, 01, 01, 03, 03},
+            {01, 01, 04, 03, 03},
+    };
+
+    static sfVector2f wd_texCoords[] = {
+            (sfVector2f) {.x = 0, .y = 0},
+            (sfVector2f) {.x = 16, .y = 0},
+            (sfVector2f) {.x = 16, .y = 16},
+            (sfVector2f) {.x = 0, .y = 16}
     };
 
     typedef struct framebuffer_s {
@@ -51,12 +80,18 @@
         sfSprite *sprite;
     } framebuffer_t;
 
-    typedef struct wd_game_s {
-        int angle_x;
-        int angle_y;
+    typedef struct wd_map_s {
         int **map;
         int map_height;
         int map_width;
+    } wd_map_t;
+
+    typedef struct wd_game_s {
+        int **map;
+        int map_height;
+        int map_width;
+        int angle_x;
+        int angle_y;
         framebuffer_t *fb;
         sfRenderWindow *win;
     } wd_game_t;
@@ -73,5 +108,10 @@
     void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
     wd_game_t *init_game(void);
     int render_map(wd_game_t*game);
+    sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2);
+    sfRenderStates *init_text_state(wd_spritetype_e type);
+    sfVector2f pos_3d_to_2d(int x, int y, int z, wd_game_t *game);
+    int draw_spritemap(wd_game_t *game);
+    void framebuffer_destroy(framebuffer_t *framebuffer);
 
 #endif //MY_WORLD_H
