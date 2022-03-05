@@ -22,11 +22,19 @@ SRC =	src/handle_errors/check_env.c		\
 		src/my_world/my_world.c				\
 		src/init_elements/init_window.c		\
 		src/init_elements/init_game.c		\
-		src/init_elements/init_text_state.c		\
+		src/init_elements/init_text_state.c	\
+		src/init_elements/init_matrix.c		\
 		src/isometry/render_map.c			\
 		src/isometry/points.c				\
 		src/isometry/draw_line.c			\
 		src/isometry/draw_spritemap.c 		\
+		src/isometry/pos_3d_to_2d.c 		\
+		src/matrix/apply_matrix.c 			\
+		src/matrix/calc_end_matrix.c 		\
+		src/matrix/free_matrix.c 			\
+		src/matrix/multiply_matrix.c		\
+		src/matrix/rotate_matrix.c			\
+		src/matrix/show_matrix.c 			\
 		src/utils/my_calloc.c 				\
 		src/framebuffer/framebuffer_utils.c	\
 
@@ -73,3 +81,5 @@ cover:
 
 debug: CFLAGS += -g
 debug: re
+
+.PHONY: all clean fclean re tests_run cover debug

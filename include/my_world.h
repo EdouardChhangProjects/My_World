@@ -26,52 +26,6 @@
     #include <SFML/Window/Mouse.h>
     #include <time.h>
 
-    #define HELP "assets/help.txt"
-
-    #define WIDTH 1920
-    #define HEIGHT 1080
-    #define FPS 80
-    #define MAP_X 6
-    #define MAP_Y 6
-
-    typedef enum wd_spritetype {
-        GRASS,
-        SWAMP,
-        ICE,
-        FIRE
-    } wd_spritetype_e;
-
-    static char *wd_spritefile[] = {
-            "assets/BasicGreen.png",
-            "assets/Swampset.png",
-            "assets/IceSet.png",
-            "assets/FireSet.png"
-    };
-
-    static int map[MAP_X][MAP_Y] = {
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 01, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-        {00, 00, 00, 00, 00, 00},
-    };
-
-    static int map_text[MAP_X - 1][MAP_Y - 1] = {
-            {04, 01, 01, 02, 01},
-            {01, 01, 02, 01, 01},
-            {01, 02, 04, 01, 04},
-            {02, 01, 01, 03, 03},
-            {01, 01, 04, 03, 03},
-    };
-
-    static sfVector2f wd_texCoords[] = {
-            (sfVector2f) {.x = 0, .y = 0},
-            (sfVector2f) {.x = 16, .y = 0},
-            (sfVector2f) {.x = 16, .y = 16},
-            (sfVector2f) {.x = 0, .y = 16}
-    };
-
     typedef struct framebuffer_s {
         unsigned int width;
         unsigned int height;
@@ -86,6 +40,14 @@
         int map_width;
     } wd_map_t;
 
+    typedef struct wd_matrix4x4_s {
+        float **base_matrix;
+        float **rotx_matrix;
+        float **roty_matrix;
+        float **end_matrix;
+        float **proj_matrix;
+    } wd_matrix4x4_t;
+
     typedef struct wd_game_s {
         int **map;
         int map_height;
@@ -94,7 +56,58 @@
         int angle_y;
         framebuffer_t *fb;
         sfRenderWindow *win;
+        wd_matrix4x4_t matrix;
     } wd_game_t;
+
+    #define HELP "assets/help.txt"
+
+    #define WIDTH 1920
+    #define HEIGHT 1080
+    #define SCREEN_RATIO WIDTH / HEIGHT
+    #define FPS 80
+    #define MAP_X 6
+    #define MAP_Y 6
+    #define FOV 45
+    #define FNEAR 1.0
+    #define FFAR 10.0
+    #define FOV 90.0
+    #define FOVRAD  (1.0 / tan(FOV * 0.5 / 180.0f * M_PI));
+
+
+    typedef enum wd_spritetype {
+        GRASS,
+        SWAMP,
+        ICE,
+        FIRE
+    } wd_spritetype_e;
+
+    static char *wd_spritefile[] = {
+            "assets/BasicGreen.png",
+            "assets/Swampset.png",
+            "assets/IceSet.png",
+            "assets/FireSet.png"
+    };
+    static int map[MAP_X][MAP_Y] = {
+            {01, 01, 01, 01, 01, 01},
+            {01, 01, 01, 01, 01, 01},
+            {01, 01, 01, 01, 02, 01},
+            {01, 01, 01, 02, 03, 01},
+            {01, 01, 01, 01, 02, 01},
+            {01, 01, 01, 01, 01, 01},
+    };
+    static int map_text[MAP_X - 1][MAP_Y - 1] = {
+            {04, 01, 01, 02, 01},
+            {01, 01, 02, 01, 01},
+            {01, 02, 04, 01, 04},
+            {02, 01, 01, 03, 03},
+            {01, 01, 04, 03, 03},
+    };
+    static sfVector2f wd_texCoords[] = {
+            (sfVector2f) {.x = 0, .y = 0},
+            (sfVector2f) {.x = 16, .y = 0},
+            (sfVector2f) {.x = 16, .y = 16},
+            (sfVector2f) {.x = 0, .y = 16}
+    };
 
     int check_env(char **env);
     int print_help(void);
@@ -116,6 +129,13 @@
     double to_radiant(double angle);
     int draw_lines(wd_game_t *game);
     sfVector2f ***get_points(wd_game_t *game);
-
+    float **init_matrix(int empty);
+    int show_matrix(float **matrix);
+    float **multiply_matrix(float **matrix1, float **matrix2);
+    sfVector3f apply_matrix(sfVector3f vector, float **matrix);
+    void rotate_matrix_x(wd_game_t *game, double angle_x);
+    void rotate_matrix_y(wd_game_t *game, double angle_y);
+    float **init_proj_matrix();
+    int calc_end_matrix(wd_game_t *game);
 
 #endif //MY_WORLD_H
