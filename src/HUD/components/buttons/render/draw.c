@@ -25,19 +25,38 @@ sfVector2f view_pos)
 
 // static
 
-void hud_button_render_sprite(sfRenderWindow *win, hud_button_t *button,
+/* sfRenderStates *init_text_state(sfTexture *texture)
+{
+    sfRenderStates *states = my_memset(sizeof(sfRenderStates), NULL);
+
+    if (texture == NULL || states == NULL) {
+        return NULL;
+    }
+    states->shader = sfShader_createFromMemory(NULL, NULL, NULL);
+    states->blendMode = sfBlendAlpha;
+    states->transform = sfTransform_Identity;
+    states->texture = texture;
+    return states;
+} */
+
+void hud_button_render_texture(sfRenderWindow *win, hud_button_t *button,
 sfVector2f view_pos)
 {
-    if (button->sprite == NULL)
+    sfVertexArray *rect = NULL;
+    sfRenderStates *states = malloc(sizeof(sfRenderStates));
+
+    if (button->texture == NULL)
         return;
-    
-    sfSprite_setPosition(button->sprite->sprite, (sfVector2f){
-    .x = button->pos.left + view_pos.x,
-    .y = button->pos.width + view_pos.y});
-    sfSprite_setTextureRect(button->sprite->sprite, button->pos);
-    sfSprite_setTexture(button->sprite->sprite, button->sprite->texture,
-    sfTrue);
-    sfRenderWindow_drawSprite(win, button->sprite->sprite, NULL);
+    rect = hud_create_rect((sfFloatRect){
+    .left = button->pos.left, .top = button->pos.top,
+    .width = button->pos.width, .height = button->pos.height}, sfWhite,
+    view_pos, button->texture);
+    states->shader = sfShader_createFromMemory(NULL, NULL, NULL);
+    states->blendMode = sfBlendAlpha;
+    states->transform = sfTransform_Identity;
+    states->texture = button->texture;
+    sfRenderWindow_drawVertexArray(win, rect, states);
+    sfVertexArray_destroy(rect);
 }
 
 static sfColor hud_button_get_color(hud_button_t *button)
@@ -71,5 +90,5 @@ sfVector2f view_pos)
     hud_draw_rect(win, (sfFloatRect){.left = button->pos.left,
     .top = button->pos.top, .width = button->pos.width,
     .height = button->pos.height}, color, view_pos);
-    hud_button_render_sprite(win, button, view_pos);
+    hud_button_render_texture(win, button, view_pos);
 }

@@ -22,7 +22,7 @@ hud_button_t *hud_button_init(void)
     button->toggle = false;
     button->toggleable = false;
     button->hover = false;
-    button->sprite = NULL;
+    button->texture = NULL;
     button->hidden = false;
     return button;
 }

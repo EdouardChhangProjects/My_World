@@ -23,7 +23,7 @@ void hud_draw_vertexRect(sfRenderWindow *win, sfVertexArray *rect)
 void hud_draw_rect(sfRenderWindow *win, sfFloatRect pos, sfColor color,
 sfVector2f view_pos)
 {
-    sfVertexArray *rect = hud_create_rect(pos, color, view_pos);
+    sfVertexArray *rect = hud_create_rect(pos, color, view_pos, NULL);
 
     hud_draw_vertexRect(win, rect);
 }

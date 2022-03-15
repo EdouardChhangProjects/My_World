@@ -74,7 +74,7 @@ void hud_parser_button_get_action(hud_t *hud, hud_button_t *button, char **keys)
         free(key);
     }
     if ((key = hud_parser_get_key(keys, "texture")) != NULL) {
-        button->sprite = hud_sprite_set(key);
+        button->texture = hud_texture_set(key);
         free(key);
     }
 }
