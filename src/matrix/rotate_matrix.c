@@ -22,10 +22,10 @@ void rotate_matrix_y(wd_game_t *game, double angle_y)
 {
     angle_y *= 0.5;
     game->matrix.roty_matrix[0][0] = 1;
-    game->matrix.roty_matrix[1][1] = cos(to_radiant(angle_y));
-    game->matrix.roty_matrix[1][2] = sin(to_radiant(angle_y));
-    game->matrix.roty_matrix[2][1] = -sin(to_radiant(angle_y));
-    game->matrix.roty_matrix[2][2] = cos(to_radiant(angle_y));
+    game->matrix.roty_matrix[1][1] = cos(to_radiant(angle_y * 2));
+    game->matrix.roty_matrix[1][2] = sin(to_radiant(angle_y * 2));
+    game->matrix.roty_matrix[2][1] = -sin(to_radiant(angle_y * 2));
+    game->matrix.roty_matrix[2][2] = cos(to_radiant(angle_y * 2));
     game->matrix.roty_matrix[3][3] = 1;
     return game->matrix.roty_matrix;
 }

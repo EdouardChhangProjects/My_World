@@ -31,16 +31,65 @@ int draw_spritetile(wd_game_t *game, unsigned int x, unsigned int y,
     return 0;
 }
 
+static int update_x(int i, wd_game_t *game)
+{
+    int x = 0;
+
+    switch (game->dir) {
+        case NE:
+            x = i % (game->map->width - 1);
+            break;
+        case NO:
+            x = i / (game->map->width - 1);
+            break;
+        case SO:
+            x = (game->map->width - 1) - (i % (game->map->width - 1)) - 1;
+            break;
+        case SE:
+            x = (game->map->width - 1) - (i / (game->map->width - 1)) - 1;
+    }
+    return x;
+}
+
+static int update_y(int i, wd_game_t *game)
+{
+    int y = 0;
+
+    switch (game->dir) {
+        case NE:
+            y = (game->map->height - 2) - (i / (game->map->height - 1));
+            break;
+        case NO:
+            y = i % (game->map->height - 1);
+            break;
+        case SO:
+            y = i / (game->map->width - 1);
+            break;
+        case SE:
+            y = (game->map->height - 1) - (i % (game->map->width - 1)) - 1;
+    }
+    return y;
+}
+
+
 int draw_spritemap(wd_game_t *game)
 {
     sfVertexArray *vertexarr = sfVertexArray_create();
+    int x = 0;
+    int y = 0;
 
     if (vertexarr == NULL)
         return 84;
     sfVertexArray_setPrimitiveType(vertexarr, sfQuads);
-    for (unsigned int x = 0; x < MAP_X - 1; ++x)
-        for (unsigned int y = 0; y < MAP_Y - 1; ++y)
-            draw_spritetile(game, x, y, vertexarr);
+    for (int i = 0; i < (game->map->width - 1) * (game->map->height -1); i++) {
+        x = update_x(i, game);
+        y = update_y(i, game);
+        if (sfKeyboard_isKeyPressed(sfKeyH))
+            usleep(10000 * 5);
+        draw_spritetile(game, x, y, vertexarr);
+        if (sfKeyboard_isKeyPressed(sfKeyH))
+            sfRenderWindow_display(game->win);
+    }
     sfVertexArray_destroy(vertexarr);
     return 0;
 }
