@@ -15,21 +15,15 @@
 #include "printerr.h"
 #include "printf.h"
 #include "math.h"
+#include "hud.h"
 
 #ifndef MY_WORLD_H
     #define MY_WORLD_H
 
-    #include <stdlib.h>
-    #include <math.h>
-    #include <SFML/Graphics.h>
-    #include <SFML/System/Clock.h>
-    #include <SFML/Window/Mouse.h>
-    #include <time.h>
-
     #define HELP "assets/help.txt"
 
-    #define WIDTH 1920
-    #define HEIGHT 1080
+    #define WIDTH 1280
+    #define HEIGHT 720
     #define FPS 80
     #define MAP_X 6
     #define MAP_Y 6
@@ -77,6 +71,5 @@ sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2);
 int draw_lines(wd_game_t *game);
 sfVector2f ***get_points(wd_game_t *game);
 sfVector2f *get_point(int x, int y, int z, wd_game_t *game);
-
 
 #endif //MY_WORLD_H
