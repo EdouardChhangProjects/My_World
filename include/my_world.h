@@ -20,6 +20,11 @@
 #ifndef MY_WORLD_H
     #define MY_WORLD_H
 
+    extern char *wd_spritefile[];
+    extern int **map;
+    extern int **map_text;
+    extern sfVector2f wd_texCoords[];
+
     typedef struct framebuffer_s {
         unsigned int width;
         unsigned int height;
@@ -69,12 +74,10 @@
     #define FPS 80
     #define MAP_X 6
     #define MAP_Y 6
-    #define FOV 45
     #define FNEAR 1.0
     #define FFAR 10.0
     #define FOV 90.0
     #define FOVRAD  (1.0 / tan(FOV * 0.5 / 180.0f * M_PI));
-
 
     typedef enum wd_spritetype {
         GRASS,
@@ -82,34 +85,6 @@
         ICE,
         FIRE
     } wd_spritetype_e;
-
-    static char *wd_spritefile[] = {
-            "assets/BasicGreen.png",
-            "assets/Swampset.png",
-            "assets/IceSet.png",
-            "assets/FireSet.png"
-    };
-    static int map[MAP_X][MAP_Y] = {
-            {01, 01, 01, 01, 01, 01},
-            {01, 01, 01, 01, 01, 01},
-            {01, 01, 01, 01, 02, 01},
-            {01, 01, 01, 02, 03, 01},
-            {01, 01, 01, 01, 02, 01},
-            {01, 01, 01, 01, 01, 01},
-    };
-    static int map_text[MAP_X - 1][MAP_Y - 1] = {
-            {04, 01, 01, 02, 01},
-            {01, 01, 02, 01, 01},
-            {01, 02, 04, 01, 04},
-            {02, 01, 01, 03, 03},
-            {01, 01, 04, 03, 03},
-    };
-    static sfVector2f wd_texCoords[] = {
-            (sfVector2f) {.x = 0, .y = 0},
-            (sfVector2f) {.x = 16, .y = 0},
-            (sfVector2f) {.x = 16, .y = 16},
-            (sfVector2f) {.x = 0, .y = 16}
-    };
 
     int check_env(char **env);
     int print_help(void);
