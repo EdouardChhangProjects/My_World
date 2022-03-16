@@ -50,7 +50,11 @@ SRC = my_compute_power_rec.c \
 			str_start_with.c\
 			for_str_in_str.c\
 			resize_str.c\
-			my_strdup.c
+			my_strdup.c\
+			str_utils.c\
+			str_to_array.c\
+			char_arr_utils.c\
+			is_in_str.c
 
 
 OBJ = $(SRC:.c=.o)

@@ -5,7 +5,7 @@
 ## Makefile to build libmy.a
 ##
 
-override CFLAGS += -fno-builtin -W -Wall -Wextra -I.
+override CFLAGS += -I.
 
 SRC =		my_getnbr.c\
 			is_in_str.c\
