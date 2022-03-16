@@ -1,0 +1,9 @@
+<button@pos={0:0:100:100};action=but1@/>
+<button@pos={100:0:100:100};action=but2@/>
+<button@pos={200:0:100:100};action=but3@/>
+<button@pos={300:0:100:100};action=but4@/>
+<button@pos={400:0:100:100};action=but5@/>
+<button@pos={500:0:100:100};action=but6@/>
+<button@pos={600:0:100:100};action=but7@/>
+<button@pos={700:0:100:100};action=but8@/>
+<button@pos={500:100:100:100};action=test2;color={0:0:0:0};border=false;action=lititoto;texture=assets/buttons/pause.png@/>

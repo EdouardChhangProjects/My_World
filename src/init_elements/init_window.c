@@ -15,7 +15,7 @@ sfRenderWindow *render_window(void)
     win = sfRenderWindow_create(mode, "my_world", sfClose, NULL);
     sfRenderWindow_setFramerateLimit(win, FPS);
     if (win == NULL) {
-        my_printerr("./my_runner: Failed to create window\n");;
+        my_printerr("./my_world: Failed to create window\n");;
         return NULL;
     }
     return win;

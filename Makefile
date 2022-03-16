@@ -56,13 +56,15 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/isometry/points.c				\
 		src/global.c
 
+OBJ = $(SRC:.c=.o)
+
+TESTSRC = tests/test_make.c
+
 TESTOBJ = $(TESTSRC:.c=.o)
 
 MAINSRC = main.c
 
 MAINOBJ = $(MAINSRC:.c=.o)
-
-OBJ = $(SRC:.c=.o)
 
 NAME = my_world
 
