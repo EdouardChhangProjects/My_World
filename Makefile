@@ -10,8 +10,8 @@ override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib \
 override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr -lm
 
 SRC	=	src/HUD/components/buttons/set/pos_size.c	\
-		src/HUD/components/buttons/render/draw.c	\
 		src/HUD/components/buttons/init/struct.c	\
+		src/HUD/components/buttons/render/draw.c	\
 		src/HUD/components/buttons/set/border.c		\
 		src/HUD/parser/core/array_constructor.c		\
 		src/HUD/parser/utils/str_dup_from_to.c		\
@@ -26,29 +26,32 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/init_elements/init_window.c			\
 		src/HUD/parser/core/extractor.c			\
 		src/handle_errors/print_help.c			\
+		src/isometry/normalize_angle.c			\
 		src/HUD/engine/create/button.c			\
 		src/HUD/parser/button/action.c			\
 		src/HUD/parser/core/get_keys.c			\
 		src/handle_errors/check_env.c			\
 		src/init_elements/init_game.c			\
 		src/isometry/draw_spritemap.c			\
+		src/HUD/engine/events/event.c			\
 		src/HUD/engine/init/actions.c			\
 		src/HUD/engine/init/texture.c			\
-		src/HUD/engine/events/event.c			\
 		src/HUD/parser/button/parse.c			\
-		src/HUD/engine/render/draw.c			\
 		src/HUD/engine/events/clic.c			\
+		src/HUD/engine/render/draw.c			\
 		src/matrix/calc_end_matrix.c			\
 		src/matrix/multiply_matrix.c			\
 		src/isometry/pos_3d_to_2d.c			\
 		src/HUD/engine/init/init.c			\
 		src/matrix/rotate_matrix.c			\
 		src/isometry/render_map.c			\
+		src/isometry/update_dir.c			\
 		src/matrix/apply_matrix.c			\
 		src/isometry/draw_line.c			\
 		src/matrix/free_matrix.c			\
 		src/matrix/show_matrix.c			\
 		src/my_world/my_world.c				\
+		src/utils/free_states.c				\
 		src/isometry/points.c				\
 		src/utils/my_calloc.c				\
 		src/my_world/hud.c
