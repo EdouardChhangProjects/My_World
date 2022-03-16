@@ -1,6 +1,6 @@
+# Personal
 cmake-build-debug
 build
-assets
 .vscode/
 *.gc*
 vgcore*

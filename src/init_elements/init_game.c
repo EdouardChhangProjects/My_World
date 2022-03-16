@@ -20,5 +20,13 @@ wd_game_t *init_game(void)
     game->map = (int **)map;
     game->map_width = MAP_X;
     game->map_height = MAP_Y;
+    game->matrix.base_matrix = init_matrix(0);
+    game->matrix.rotx_matrix = init_matrix(1);
+    game->matrix.roty_matrix = init_matrix(1);
+    rotate_matrix_x(game, game->angle_x);
+    rotate_matrix_y(game, game->angle_y);
+    game->matrix.proj_matrix = init_proj_matrix();
+    game->matrix.end_matrix = init_matrix(1);
+    calc_end_matrix(game);
     return game;
 }

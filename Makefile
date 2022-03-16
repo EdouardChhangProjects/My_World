@@ -9,19 +9,6 @@ override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib \
 -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
 override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr -lm
 
-SRC	=	src/framebuffer/framebuffer_utils.c	\
-		src/init_elements/init_window.c		\
-		src/handle_errors/print_help.c		\
-		src/handle_errors/check_env.c		\
-		src/init_elements/init_game.c		\
-		src/isometry/render_map.c		\
-		src/isometry/draw_line.c		\
-		src/my_world/my_world.c			\
-		src/isometry/points.c			\
-		src/utils/my_calloc.c
-
-OBJ = $(SRC:.c=.o)
-
 TESTSRC = tests/test_make.c
 
 TESTOBJ = $(TESTSRC:.c=.o)
@@ -29,6 +16,29 @@ TESTOBJ = $(TESTSRC:.c=.o)
 MAINSRC = main.c
 
 MAINOBJ = $(MAINSRC:.c=.o)
+
+SRC =	src/handle_errors/check_env.c		\
+		src/handle_errors/print_help.c		\
+		src/my_world/my_world.c				\
+		src/init_elements/init_window.c		\
+		src/init_elements/init_game.c		\
+		src/init_elements/init_text_state.c	\
+		src/init_elements/init_matrix.c		\
+		src/isometry/render_map.c			\
+		src/isometry/points.c				\
+		src/isometry/draw_line.c			\
+		src/isometry/draw_spritemap.c 		\
+		src/isometry/pos_3d_to_2d.c 		\
+		src/matrix/apply_matrix.c 			\
+		src/matrix/calc_end_matrix.c 		\
+		src/matrix/free_matrix.c 			\
+		src/matrix/multiply_matrix.c		\
+		src/matrix/rotate_matrix.c			\
+		src/matrix/show_matrix.c 			\
+		src/utils/my_calloc.c 				\
+		src/framebuffer/framebuffer_utils.c	\
+
+OBJ = $(SRC:.c=.o)
 
 NAME = my_world
 
@@ -71,3 +81,5 @@ cover:
 
 debug: CFLAGS += -g
 debug: re
+
+.PHONY: all clean fclean re tests_run cover debug
