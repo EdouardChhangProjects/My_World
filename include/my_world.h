@@ -140,5 +140,6 @@
     float **init_proj_matrix();
     int calc_end_matrix(wd_game_t *game);
     int free_states(sfRenderStates *states);
+    int normalize_angle(wd_game_t *game);
 
 #endif
