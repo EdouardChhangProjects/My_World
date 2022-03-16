@@ -59,5 +59,16 @@ char *resize_str(char *str, int size);
 char *my_strdup(char const *str);
 char *my_strndup(char const *str, int length);
 int for_char_in_str(char *str, char c);
+char **str_to_array(char *str, char *separators);
+int is_in_str(char *str, char c);
+int count_with_separators(char *document, char *separators);
+int count_char_before_separator(char *document, char *separators);
+char **ducplicate_char_arr(char **arr);
+char **create_char_tabl(int size);
+int my_char_tabl_len(char **tabl);
+char **add_str_to_tabl(char **tabl, char *str);
+char *add_to_str(char *str, char c);
+unsigned char *add_to_ustr(unsigned char *str, unsigned char c);
+int str_with_str(char *str, char *dict);
 
 #endif

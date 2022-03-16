@@ -32,7 +32,7 @@ void my_printerr_int(va_list args, char *formater)
         my_put_nbr_err(nb);
 }
 
-void my_printerr_char(va_list args, char *formater)
+void my_printerr_char(va_list args, char *)
 {
     my_putchar_err(va_arg(args, int));
 }
@@ -51,7 +51,7 @@ void my_printerr_float(va_list args, char *formater)
     my_put_double_err(va_arg(args, double));
 }
 
-void my_printerr_bin(va_list args, char *formater)
+void my_printerr_bin(va_list args, char *)
 {
     int nbr = va_arg(args, int);
     my_putbase_err(nbr, "01");

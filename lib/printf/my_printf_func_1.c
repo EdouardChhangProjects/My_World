@@ -32,7 +32,7 @@ void my_printf_int(va_list args, char *formater)
         my_put_nbr(nb);
 }
 
-void my_printf_char(va_list args, char *formater)
+void my_printf_char(va_list args, char *)
 {
     my_putchar(va_arg(args, int));
 }
@@ -51,7 +51,7 @@ void my_printf_float(va_list args, char *formater)
     my_put_double(va_arg(args, double));
 }
 
-void my_printf_bin(va_list args, char *formater)
+void my_printf_bin(va_list args, char *)
 {
     int nbr = va_arg(args, int);
     my_putbase(nbr, "01");

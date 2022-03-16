@@ -15,16 +15,10 @@
 #include "printerr.h"
 #include "printf.h"
 #include "math.h"
+#include "hud.h"
 
 #ifndef MY_WORLD_H
     #define MY_WORLD_H
-
-    #include <stdlib.h>
-    #include <math.h>
-    #include <SFML/Graphics.h>
-    #include <SFML/System/Clock.h>
-    #include <SFML/Window/Mouse.h>
-    #include <time.h>
 
     typedef struct framebuffer_s {
         unsigned int width;

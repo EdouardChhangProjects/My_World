@@ -17,7 +17,7 @@ int for_str_in_str(char *base_str, char *str_to_find)
     for (int i = 0; i < len_base_str; i++) {
         if (base_str[i] == str_to_find[0]) {
             counter += str_start_with(&base_str[i], str_to_find,
-            len_base_str, len_str_to_find);
+            len_base_str - i, len_str_to_find);
         }
     }
     return counter;
