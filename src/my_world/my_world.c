@@ -15,18 +15,19 @@ void on_click(wd_game_t *game, sfEvent event)
         default:
             return;
         case sfKeyQ:
-            game->angle_x -= 2;
+            game->angle_x -= 4;
         case sfKeyD:
-            game->angle_x += 1;
+            game->angle_x += 2;
             rotate_matrix_x(game, game->angle_x);
             break;
         case sfKeyZ:
-            game->angle_y += 2;
+            game->angle_y += 4;
         case sfKeyS:
-            game->angle_y -= 1;
+            game->angle_y -= 2;
             rotate_matrix_y(game, game->angle_y);
     }
     calc_end_matrix(game);
+    normalize_angle(game);
 }
 
 void analyse_events(wd_game_t *game, sfEvent event)
@@ -48,16 +49,16 @@ int gameloop(hud_button_t *button __attribute__((unused)), wd_game_t *game)
         hud_render(game->hud);
         sfRenderWindow_display(game->win);
     }
-    sfRenderWindow_destroy(game->win);
-    framebuffer_destroy(game->fb);
+    free_game(game);
     return 0;
 }
 
 int my_world(void)
 {
     wd_game_t *game = init_game();
-    game->hud = init_hud(game->win);
     hud_t *menu = NULL;
+
+    game->hud = init_hud(game->win);
     sfEvent event;
 
     if (game == NULL)

@@ -30,9 +30,16 @@
 
     typedef struct wd_map_s {
         int **map;
-        int map_height;
-        int map_width;
+        int height;
+        int width;
     } wd_map_t;
+
+    typedef enum wd_dir_e {
+        SE,
+        NO,
+        NE,
+        SO
+    } wd_dir_e;
 
     typedef struct wd_matrix4x4_s {
         float **base_matrix;
@@ -43,7 +50,6 @@
     } wd_matrix4x4_t;
 
     typedef struct wd_game_s {
-        int **map;
         int map_height;
         int map_width;
         int angle_x;
@@ -52,6 +58,8 @@
         sfRenderWindow *win;
         wd_matrix4x4_t matrix;
         hud_t *hud;
+        wd_map_t *map;
+        wd_dir_e dir;
     } wd_game_t;
 
     #define HELP "assets/help.txt"
@@ -134,5 +142,7 @@
     int calc_end_matrix(wd_game_t *game);
     hud_t *init_hud(sfRenderWindow * win);
     hud_t *init_menu(sfRenderWindow * win, wd_game_t *game);
+    int free_states(sfRenderStates *states);
+    int normalize_angle(wd_game_t *game);
 
-#endif //MY_WORLD_H
+#endif
