@@ -37,6 +37,7 @@
         int **map;
         int height;
         int width;
+        float fov;
     } wd_map_t;
 
     typedef enum wd_dir_e {
@@ -55,10 +56,7 @@
     } wd_matrix4x4_t;
 
     typedef struct wd_game_s {
-        int map_height;
-        int map_width;
-        int angle_x;
-        int angle_y;
+        sfVector2i angle;
         framebuffer_t *fb;
         sfRenderWindow *win;
         wd_matrix4x4_t matrix;
@@ -66,6 +64,12 @@
         wd_map_t *map;
         wd_dir_e dir;
     } wd_game_t;
+
+    #if defined(__GNUC__) && __GNUC__ >= 7
+        #define FALL_THROUGH __attribute__ ((fallthrough))
+    #else
+        #define FALL_THROUGH ((void)0)
+    #endif
 
     #define HELP "assets/help.txt"
 
@@ -75,10 +79,10 @@
     #define FPS 80
     #define MAP_X 6
     #define MAP_Y 6
-    #define FNEAR 1.0
-    #define FFAR 10.0
-    #define FOV 90.0
-    #define FOVRAD  (1.0 / tan(FOV * 0.5 / 180.0f * M_PI));
+    #define FNEAR 40.0
+    #define FFAR 50.0
+    #define FOV 45.0
+    #define FOVRAD(x)  (1.0 / tan(x * 0.5 / 180.0f * M_PI))
 
     typedef enum wd_spritetype {
         GRASS,
@@ -113,11 +117,16 @@
     sfVector3f apply_matrix(sfVector3f vector, float **matrix);
     void rotate_matrix_x(wd_game_t *game, double angle_x);
     void rotate_matrix_y(wd_game_t *game, double angle_y);
-    float **init_proj_matrix();
+    float **init_proj_matrix(void);
     int calc_end_matrix(wd_game_t *game);
     hud_t *init_hud(sfRenderWindow * win);
     hud_t *init_menu(sfRenderWindow * win, wd_game_t *game);
     int free_states(sfRenderStates *states);
     int normalize_angle(wd_game_t *game);
+    int free_matrix(float **matrix);
+    int free_game(wd_game_t *game);
+    void on_click(wd_game_t *game, sfEvent event);
+    int update_dir(wd_game_t *game);
+    void update_proj_matrix(wd_game_t *game);
 
 #endif

@@ -22,12 +22,12 @@ float **init_matrix(int empty)
     return dest;
 }
 
-float **init_proj_matrix()
+float **init_proj_matrix(void)
 {
     float **dest = init_matrix(1);
 
-    dest[0][0] = SCREEN_RATIO * FOVRAD;
-    dest[1][1] = FOVRAD;
+    dest[0][0] = SCREEN_RATIO * FOVRAD(45.0);
+    dest[1][1] = FOVRAD(45.0);
     dest[2][2] = FFAR * (FFAR - FNEAR);
     dest[3][2] = (-FFAR * FNEAR) / (FFAR - FNEAR);
     dest[2][3] = 1;

@@ -9,13 +9,13 @@
 
 int normalize_angle(wd_game_t *game)
 {
-    if (game->angle_x > 360)
-        game->angle_x -= 360;
-    if (game->angle_x < 0)
-        game->angle_x += 360;
-    if (game->angle_y > 180)
-        game->angle_y = 180;
-    if (game->angle_y < 100)
-        game->angle_y = 100;
+    if (game->angle.x > 360)
+        game->angle.x -= 360;
+    if (game->angle.x < 0)
+        game->angle.x += 360;
+    if (game->angle.y > 180)
+        game->angle.y = 180;
+    if (game->angle.y < 100)
+        game->angle.y = 100;
     return 0;
 }

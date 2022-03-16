@@ -14,10 +14,10 @@ sfVector2f *get_point(int x, int y, int z, wd_game_t *game)
     x *= 64;
     y *= 64;
     z *= 64;
-    point->x = cos(to_radiant(game->angle_x)) * x - cos(to_radiant
-            (game->angle_x)) * y;
-    point->y = sin(to_radiant(game->angle_y)) * y + sin(to_radiant
-            (game->angle_y)) * x - z;
+    point->x = cos(to_radiant(game->angle.x)) * x - cos(to_radiant
+            (game->angle.x)) * y;
+    point->y = sin(to_radiant(game->angle.y)) * y + sin(to_radiant
+            (game->angle.y)) * x - z;
     point->x += WIDTH / 2;
     point->y += HEIGHT / 4;
     if (point->x > 0 && point->x < game->fb->width && point->y > 0 && point->y <

@@ -14,6 +14,7 @@ wd_map_t *init_map()
     dest->map = (int **)map;
     dest->width = MAP_X;
     dest->height = MAP_Y;
+    dest->fov = (dest->width *dest->height);
     return dest;
 }
 
@@ -26,14 +27,14 @@ wd_game_t *init_game(void)
     game->fb = framebuffer_create(WIDTH, HEIGHT);
     game->win = render_window();
     game->map = init_map();
-    game->angle_x = 250;
-    game->angle_y = 150;
+    game->angle = (sfVector2i){.x = 250, .y = 150};
     game->matrix.base_matrix = init_matrix(0);
     game->matrix.rotx_matrix = init_matrix(1);
     game->matrix.roty_matrix = init_matrix(1);
-    rotate_matrix_x(game, game->angle_x);
-    rotate_matrix_y(game, game->angle_y);
-    game->matrix.proj_matrix = init_proj_matrix();
+    rotate_matrix_x(game, game->angle.x);
+    rotate_matrix_y(game, game->angle.y);
+    game->matrix.proj_matrix = init_matrix(1);
+    update_proj_matrix(game);
     game->matrix.end_matrix = init_matrix(1);
     calc_end_matrix(game);
     game->dir = NO;

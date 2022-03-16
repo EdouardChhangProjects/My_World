@@ -23,15 +23,15 @@ static wd_dir_e invert_dir(wd_dir_e dir)
 
 int update_dir(wd_game_t *game)
 {
-    if (game->angle_x < 45 ||  game->angle_x > 315)
+    if (game->angle.x < 45 ||  game->angle.x > 315)
         game->dir = NE;
-    if (game->angle_x > 45 && game->angle_x < 135)
+    if (game->angle.x > 45 && game->angle.x < 135)
         game->dir = SE;
-    if (game->angle_x > 135 && game->angle_x < 225)
+    if (game->angle.x > 135 && game->angle.x < 225)
         game->dir = SO;
-    if (game->angle_x > 225 && game->angle_x < 315)
+    if (game->angle.x > 225 && game->angle.x < 315)
         game->dir = NO;
-    if (game->angle_y > 180)
+    if (game->angle.y > 180)
         game->dir = invert_dir(game->dir);
     return 0;
 }

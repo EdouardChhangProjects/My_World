@@ -22,6 +22,7 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/HUD/parser/utils/file_to_str.c		\
 		src/HUD/engine/utils/draw_rect.c		\
 		src/HUD/parser/core/contructor.c		\
+		src/matrix/update_proj_matrix.c			\
 		src/HUD/parser/core/extractor.c			\
 		src/init_elements/init_window.c			\
 		src/init_elements/init_matrix.c			\
@@ -54,7 +55,8 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/my_world/my_world.c				\
 		src/utils/my_calloc.c				\
 		src/isometry/points.c				\
-		src/global.c
+		src/global.c					\
+		src/events.c
 
 OBJ = $(SRC:.c=.o)
 
