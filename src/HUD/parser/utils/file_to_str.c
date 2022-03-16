@@ -20,7 +20,7 @@ int get_file_size(const char *filepath)
         return -1;
     for (; read(filedesc, buff, 1) > 0; size++);
     close(filedesc);
-    return size;
+    return size - 1;
 }
 
 char *file_to_str(char *filepath)

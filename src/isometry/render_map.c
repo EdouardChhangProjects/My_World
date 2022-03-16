@@ -32,6 +32,5 @@ int render_map(wd_game_t*game)
                                HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(game->win, game->fb->sprite, NULL);
     draw_spritemap(game);
-    sfRenderWindow_display(game->win);
     return 0;
 }

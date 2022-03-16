@@ -14,7 +14,7 @@
 #include "my.h"
 #include "printerr.h"
 #include "printf.h"
-#include "math.h"
+#include <math.h>
 #include "hud.h"
 
 #ifndef MY_WORLD_H
@@ -51,6 +51,7 @@
         framebuffer_t *fb;
         sfRenderWindow *win;
         wd_matrix4x4_t matrix;
+        hud_t *hud;
     } wd_game_t;
 
     #define HELP "assets/help.txt"
@@ -106,7 +107,7 @@
     int check_env(char **env);
     int print_help(void);
     sfRenderWindow *render_window(void);
-    int gameloop(wd_game_t *game);
+    int gameloop(hud_button_t *button __attribute__((unused)), wd_game_t *game);
     int render_map(wd_game_t *game);
     void *my_memset(int size, char *str);
     framebuffer_t *clean_framebuffer(framebuffer_t *fb);
@@ -131,5 +132,7 @@
     void rotate_matrix_y(wd_game_t *game, double angle_y);
     float **init_proj_matrix();
     int calc_end_matrix(wd_game_t *game);
+    hud_t *init_hud(sfRenderWindow * win);
+    hud_t *init_menu(sfRenderWindow * win, wd_game_t *game);
 
 #endif //MY_WORLD_H
