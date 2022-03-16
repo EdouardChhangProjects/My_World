@@ -32,6 +32,5 @@ int render_map(wd_game_t*game)
     sfRenderWindow_drawSprite(game->win, game->fb->sprite, NULL);
     update_dir(game);
     draw_spritemap(game);
-    sfRenderWindow_display(game->win);
     return 0;
 }

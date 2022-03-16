@@ -36,6 +36,7 @@ sfVector2i mouse_pos, sfVector2i offset)
 
 void hud_event_mouse(hud_t *hud, sfEvent *event)
 {
+    sfRenderWindow_display(hud->win);
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(hud->win);
 
     hud_event_analyze_mouse_input(hud, event, mouse_pos,

@@ -110,6 +110,7 @@ list_t *hud_action_append(list_t *actions, char *name,
 void (*function)(hud_button_t *self, void *param), void *param);
 hud_action_t *hud_action_get(hud_t *hud, char *name);
 void hud_event_mouse(hud_t *hud, sfEvent *event);
+void hud_event(hud_t *hud, sfEvent *event);
 hud_button_t *hud_button_init(void);
 void hud_button_render(sfRenderWindow *win, hud_button_t *button,
 sfVector2f view_pos);
