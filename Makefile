@@ -14,16 +14,19 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/HUD/components/buttons/init/struct.c	\
 		src/HUD/parser/core/array_constructor.c		\
 		src/HUD/components/buttons/set/border.c		\
+		src/get_selected/get_selected_circle.c		\
 		src/HUD/parser/utils/str_dup_from_to.c		\
 		src/framebuffer/framebuffer_utils.c		\
 		src/init_elements/init_text_state.c		\
 		src/HUD/engine/utils/create_rect.c		\
 		src/HUD/parser/utils/skip_balise.c		\
 		src/HUD/parser/utils/file_to_str.c		\
+		src/utils/circleshape_contains.c		\
 		src/HUD/engine/utils/draw_rect.c		\
 		src/HUD/parser/core/contructor.c		\
 		src/matrix/update_proj_matrix.c			\
 		src/HUD/parser/core/extractor.c			\
+		src/init_elements/init_circle.c			\
 		src/init_elements/init_window.c			\
 		src/init_elements/init_matrix.c			\
 		src/handle_errors/print_help.c			\
@@ -32,6 +35,7 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/HUD/parser/button/action.c			\
 		src/isometry/normalize_angle.c			\
 		src/handle_errors/check_env.c			\
+		src/utils/triangle_contains.c			\
 		src/HUD/engine/events/event.c			\
 		src/HUD/engine/init/actions.c			\
 		src/HUD/engine/init/texture.c			\
@@ -45,6 +49,7 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/isometry/pos_3d_to_2d.c			\
 		src/matrix/rotate_matrix.c			\
 		src/HUD/engine/init/init.c			\
+		src/isometry/draw_points.c			\
 		src/matrix/apply_matrix.c			\
 		src/isometry/render_map.c			\
 		src/isometry/update_dir.c			\
@@ -53,7 +58,9 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/isometry/draw_line.c			\
 		src/utils/free_states.c				\
 		src/my_world/my_world.c				\
+		src/tools/level_tool.c				\
 		src/utils/my_calloc.c				\
+		src/utils/my_usleep.c				\
 		src/isometry/points.c				\
 		src/global.c					\
 		src/events.c

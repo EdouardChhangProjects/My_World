@@ -7,14 +7,14 @@
 
 #include "my_world.h"
 
-sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2)
+sfVertexArray *create_line(sfVector2f point1, sfVector2f point2)
 {
     sfVertexArray *vertex_array = sfVertexArray_create();
-    sfVertex vertex1 = {.position = *point1, .color = sfWhite};
-    sfVertex vertex2 = {.position = *point2, .color = sfWhite};
+    sfVertex vertex1 = {.position = point1, .color = sfWhite};
+    sfVertex vertex2 = {.position = point2, .color = sfWhite};
 
-    if (point1->x == -1 || point1->y == -1 ||
-        point2->x == -1 || point2->y == -1)
+    if (point1.x == -1 || point1.y == -1 ||
+        point2.x == -1 || point2.y == -1)
         return NULL;
     sfVertexArray_append(vertex_array, vertex1);
     sfVertexArray_append(vertex_array, vertex2);
@@ -22,7 +22,7 @@ sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2)
     return (vertex_array);
 }
 
-int draw_line(wd_game_t *game, sfVector2f ***points, int x, int y)
+int draw_line(wd_game_t *game, sfVector2f **points, int x, int y)
 {
     sfVertexArray *line = NULL;
 
@@ -40,20 +40,16 @@ int draw_line(wd_game_t *game, sfVector2f ***points, int x, int y)
         sfRenderWindow_drawVertexArray(game->win, line, NULL);
         sfVertexArray_destroy(line);
     }
-    if (x <= 0)
-        return -1;
-    if (x <= 0)
-        return -2;
     return 0;
 }
 
 int draw_lines(wd_game_t *game)
 {
-    sfVector2f ***points = get_points(game);
+    game->map->points = get_points(game);
 
     for (int y = 0; y < 6; y++) {
         for (int x = 0; x < 6; x++) {
-            draw_line(game, points, x, y);
+            draw_line(game, game->map->points, x, y);
         }
     }
     return 0;

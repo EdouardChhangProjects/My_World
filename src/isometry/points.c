@@ -14,14 +14,14 @@ sfVector2f *get_point(int x, int y, int z, wd_game_t *game)
     x *= 64;
     y *= 64;
     z *= 64;
-    point->x = cos(to_radiant(game->angle.x)) * x - cos(to_radiant
-            (game->angle.x)) * y;
-    point->y = sin(to_radiant(game->angle.y)) * y + sin(to_radiant
-            (game->angle.y)) * x - z;
+    point->x = cos(to_radiant(game->angle.x)) * x
+            - cos(to_radiant(game->angle.x)) * y;
+    point->y = sin(to_radiant(game->angle.y)) * y
+            + sin(to_radiant(game->angle.y)) * x - z;
     point->x += WIDTH / 2;
     point->y += HEIGHT / 4;
-    if (point->x > 0 && point->x < game->fb->width && point->y > 0 && point->y <
-    game->fb->height) {
+    if (point->x > 0 && point->x < game->fb->width && point->y > 0 &&
+            point->y < game->fb->height) {
         return point;
     }
     point->x = -1;
@@ -29,22 +29,14 @@ sfVector2f *get_point(int x, int y, int z, wd_game_t *game)
     return point;
 }
 
-sfVector2f ***get_points(wd_game_t *game)
+sfVector2f **get_points(wd_game_t *game)
 {
-    int X = 6;
-    int Y = 6;
-    sfVector2f ***points = malloc(sizeof(sfVector2f **) * (Y + 1));
+    sfVector2f **points = my_memset(sizeof(sfVector2f *) * (MAP_Y + 1), NULL);
 
-    for (int y = 0; y < Y; ++y) {
-        points[y] = malloc(sizeof(sfVector2f *) * (X + 1));
-        for (int x = 0; x < X; ++x) {
-            points[y][x] = malloc(sizeof(sfVector2f) * 1);
-        }
-        points[y][X] = NULL;
-    }
-    for (int y = 0; y < Y; ++y)
-        for (int x = 0; x < X; ++x)
-            *(points[y][x]) = pos_3d_to_2d(x, y, map[x][y], game);
-    points[Y] = NULL;
+    for (int x = 0; x < MAP_X; ++x)
+        points[x] = my_memset(sizeof(sfVector2f) * (MAP_X + 1), NULL);
+    for (int y = 0; y < MAP_Y; ++y)
+        for (int x = 0; x < MAP_X; ++x)
+            points[y][x] = pos_3d_to_2d(x, y, map[x][y], game);
     return points;
 }

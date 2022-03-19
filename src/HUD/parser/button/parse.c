@@ -7,6 +7,10 @@
 
 #include "hud.h"
 
+/* if ((key = hud_parser_get_key(keys, "actionBorderColor")) != NULL) {
+    button->borderColor = hud_parser_sfcolor(key);
+    free(key);
+} */
 static void hud_parser_button_get_value_3(hud_button_t *button,
 char **keys)
 {
@@ -24,10 +28,6 @@ char **keys)
         button->color = hud_parser_sfcolor(key);
         free(key);
     }
-    /* if ((key = hud_parser_get_key(keys, "actionBorderColor")) != NULL) {
-        button->borderColor = hud_parser_sfcolor(key);
-        free(key);
-    } */
 }
 
 static void hud_parser_button_get_value_2(hud_button_t *button,
@@ -65,7 +65,8 @@ void hud_parser_button_get_value(hud_button_t *button, char **keys)
     hud_parser_button_get_value_2(button, keys);
 }
 
-void hud_parser_button_get_action(hud_t *hud, hud_button_t *button, char **keys)
+void hud_parser_button_get_action(hud_t *hud,
+hud_button_t *button, char **keys)
 {
     char *key = NULL;
 

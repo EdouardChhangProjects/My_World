@@ -7,30 +7,36 @@
 
 #include "my_world.h"
 
-sfVector2f print_point(int x, int y, int z, wd_game_t *game)
+int draw_map(wd_game_t *game)
 {
-    sfVector2f vector = pos_3d_to_2d(x, y, z, game);
-    sfVector2f vector2 = pos_3d_to_2d(x, y, 0, game);
+    sfVertexArray *vertexarr = sfVertexArray_create();
+    sfCircleShape *circle = init_circle(50 / (game->map->fov / 10));
+    int x = 0;
+    int y = 0;
 
-    if (vector.x > 0 && vector.x < game->fb->width && \
-    vector.y > 0 && vector.y < game->fb->height) {
-        my_put_pixel(game->fb, vector.x, vector.y, sfWhite);
+    sfVertexArray_setPrimitiveType(vertexarr, sfQuads);
+    for (int i = 0; i < (MAP_X) * (MAP_Y); ++i) {
+        x = update_x(i, game, MAP_X, MAP_Y);
+        y = update_y(i, game, MAP_X, MAP_Y);
+        if (sfKeyboard_isKeyPressed(sfKeyH))
+            my_usleep(0.1 * 1000000);
+        draw_line(game, game->map->points, y, x);
+        if (x != MAP_X - 1 && y != MAP_Y - 1)
+            draw_spritetile(game, x, y, vertexarr);
+        circleshape_draw(game, circle, x, y);
+        if (sfKeyboard_isKeyPressed(sfKeyH))
+        sfRenderWindow_display(game->win);
     }
+    sfCircleShape_destroy(circle);
+    return 0;
 }
 
 int render_map(wd_game_t*game)
 {
-    clean_framebuffer(game->fb);
-    for (int y = 0; y < 6; ++y) {
-        sfRenderWindow_clear(game->win, sfBlack);
-        for (int x = 0; x < 6; ++x)
-            print_point(x, y, map[x][y], game);
-    }
-    sfTexture_updateFromPixels(game->fb->texture, game->fb->pixels, WIDTH,
-                               HEIGHT, 0, 0);
-    sfRenderWindow_drawSprite(game->win, game->fb->sprite, NULL);
-    update_dir(game);
-    draw_lines(game);
-    draw_spritemap(game);
+    sfRenderWindow_clear(game->win, sfBlack);
+    for (int y = 0; y < MAP_X; ++y)
+        for (int x = 0; x < MAP_Y; ++x)
+            game->map->points[x][y] = pos_3d_to_2d(x, y, map[x][y], game);
+    draw_map(game);
     return 0;
 }

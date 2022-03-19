@@ -7,6 +7,8 @@
 
 #include "hud.h"
 
+/* ((hud_button_t *)buttons->data)->action->function(((hud_button_t *)
+buttons->data), ((hud_button_t *)buttons->data)->action->param); */
 void hud_event_button_click(hud_button_t *button, sfEvent *event)
 {
     if (sfMouse_isButtonPressed(sfMouseLeft) == sfTrue) {
@@ -16,8 +18,6 @@ void hud_event_button_click(hud_button_t *button, sfEvent *event)
             button->action->function(button, button->action->param);
         }
     }
-    /* ((hud_button_t *)buttons->data)->action->function(((hud_button_t *)
-    buttons->data), ((hud_button_t *)buttons->data)->action->param); */
 }
 
 void hud_event_analyze_mouse_input(hud_t *hud, sfEvent *event,
