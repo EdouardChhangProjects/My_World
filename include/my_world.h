@@ -81,7 +81,7 @@
     } wd_game_t;
 
     #if defined(__GNUC__) && __GNUC__ >= 7
-        #define FALL_THROUGH __attribute__ ((fallthrough))
+        #define FALL_THROUGH __attribute__((fallthrough))
     #else
         #define FALL_THROUGH ((void)0)
     #endif
@@ -98,12 +98,6 @@
     #define FFAR 10.0
     #define FOV 45.0
     #define FOVRAD(x) (1.0 / tan((x) * 0.5 / 180.0f * M_PI))
-    #define SELECTED_POINT game->map->points[game->map->selected.x]\
-                                            [game->map->selected.y]
-    #define SELECTED_LINE game->map->line[game->map->selected.x]\
-                                            [game->map->selected.y]
-    #define SELECTED_VERTEX game->map->vertex[game->map->selected.x]\
-                                                [game->map->selected.y]
     #define SELECTED_TILE game->map->map[game->map->selected.x]\
                                                 [game->map->selected.y]
 

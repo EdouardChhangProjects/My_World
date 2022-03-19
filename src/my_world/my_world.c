@@ -21,10 +21,6 @@ void update_status(wd_game_t *game)
             level_tool(game);
         if (game->map->type == UNIFORM)
             union_tool(game);
-        //if (game->map->type == SKIN)
-            //skin_tool(game);
-        if (tile_contains(game, (sfVector2i){0}, mouse))
-            printf("YEP\n");
     }
     update_dir(game);
 }

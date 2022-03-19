@@ -7,13 +7,6 @@
 
 #include "my_world.h"
 
-char *wd_spritefile[] = {
-        "assets/basic_green.png",
-        "assets/swamp_set.png",
-        "assets/ice_set.png",
-        "assets/fire_set.png"
-};
-
 int **map = (int *[]) {
         (int []){0, 0, 0, 0, 0, 0},
         (int []){0, 0, 0, 0, 0, 0},
