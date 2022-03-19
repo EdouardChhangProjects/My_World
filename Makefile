@@ -46,11 +46,13 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/matrix/multiply_matrix.c			\
 		src/HUD/engine/events/clic.c			\
 		src/HUD/engine/render/draw.c			\
+		src/my_world/actions/menu.c			\
 		src/isometry/pos_3d_to_2d.c			\
 		src/matrix/rotate_matrix.c			\
 		src/HUD/engine/init/init.c			\
 		src/isometry/draw_points.c			\
 		src/matrix/apply_matrix.c			\
+		src/utils/free_char_arr.c			\
 		src/isometry/render_map.c			\
 		src/isometry/update_dir.c			\
 		src/matrix/show_matrix.c			\
@@ -62,6 +64,8 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/utils/my_calloc.c				\
 		src/utils/my_usleep.c				\
 		src/isometry/points.c				\
+		src/my_world/event.c				\
+		src/my_world/hud.c				\
 		src/global.c					\
 		src/events.c
 

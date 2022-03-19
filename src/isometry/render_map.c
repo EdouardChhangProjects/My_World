@@ -33,7 +33,7 @@ int draw_map(wd_game_t *game)
 
 int render_map(wd_game_t*game)
 {
-    sfRenderWindow_clear(game->win, sfBlack);
+    //sfRenderWindow_clear(game->win, sfBlack);
     for (int y = 0; y < MAP_X; ++y)
         for (int x = 0; x < MAP_Y; ++x)
             game->map->points[x][y] = pos_3d_to_2d(x, y, map[x][y], game);

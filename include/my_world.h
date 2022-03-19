@@ -5,7 +5,6 @@
 ** my_world
 */
 
-
 #include <SFML/Graphics.h>
 #include <SFML/System/Clock.h>
 #include <SFML/Window/Mouse.h>
@@ -70,14 +69,26 @@
         float **proj_matrix;
     } wd_matrix4x4_t;
 
+    struct menus_s {
+        bool main;
+        hud_t *main_hud;
+        bool pause;
+        hud_t *pause_hud;
+        bool save;
+        hud_t *save_hud;
+    };
+
     typedef struct wd_game_s {
         wd_vector2d_t angle;
         framebuffer_t *fb;
         sfRenderWindow *win;
         wd_matrix4x4_t matrix;
+        struct menus_s menus;
         hud_t *hud;
+        int status;
         wd_map_t *map;
         wd_dir_e dir;
+
     } wd_game_t;
 
     #if defined(__GNUC__) && __GNUC__ >= 7
@@ -108,10 +119,15 @@
         FIRE
     } wd_spritetype_e;
 
+    int gameloop(wd_game_t *game);
+    float **init_proj_matrix();
+    wd_game_t *init_huds(wd_game_t *game);
+    void analyse_events(wd_game_t *game, sfEvent event);
+    void analyse_win_events(wd_game_t *game, sfEvent event);
+    int huds_events(wd_game_t *game, sfEvent event);
     int check_env(char **env);
     int print_help(void);
     sfRenderWindow *render_window(void);
-    int gameloop(hud_button_t *button, wd_game_t *game);
     int render_map(wd_game_t *game);
     void *my_memset(int size, char *str);
     framebuffer_t *clean_framebuffer(framebuffer_t *fb);
@@ -124,7 +140,6 @@
     sfRenderStates *init_text_state(wd_spritetype_e type);
     sfVector2f pos_3d_to_2d(int x, int y, int z, wd_game_t *game);
     int draw_spritemap(wd_game_t *game);
-    void framebuffer_destroy(framebuffer_t *framebuffer);
     double to_radiant(double angle);
     int draw_lines(wd_game_t *game);
     sfVector2f **get_points(wd_game_t *game);
@@ -136,7 +151,7 @@
     void rotate_matrix_y(wd_game_t *game, double angle_y);
     float **init_proj_matrix(void);
     int calc_end_matrix(wd_game_t *game);
-    hud_t *init_hud(sfRenderWindow * win);
+    hud_t *init_hud(wd_game_t *game);
     hud_t *init_menu(sfRenderWindow * win, wd_game_t *game);
     int free_states(sfRenderStates *states);
     int normalize_angle(wd_game_t *game);

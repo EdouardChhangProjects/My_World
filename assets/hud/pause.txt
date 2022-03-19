@@ -1,0 +1,2 @@
+<button@pos={810:490:100:100};texture=assets/buttons/pause.png;action=toogle_pause;border=false;color={0:0:0:0};actionColor={0:0:0:0}@/>
+<button@pos={1010:490:100:100};texture=assets/buttons/exit.png;action=launch_menu;border=false;color={0:0:0:0};actionColor={0:0:0:0}@/>

@@ -10,9 +10,6 @@
 
 void update_status(wd_game_t *game)
 {
-    sfVector2f mouse = {(float)sfMouse_getPositionRenderWindow(game->win).x,
-                        (float)sfMouse_getPositionRenderWindow(game->win).y};
-
     if (!sfMouse_isButtonPressed(sfMouseLeft)) {
         game->map->selected = get_selected_circle(game, 50 - \
         (game->map->fov / 10));
@@ -25,29 +22,26 @@ void update_status(wd_game_t *game)
     update_dir(game);
 }
 
-void analyse_events(wd_game_t *game, sfEvent event)
-{
-    sfVector2i mouse = sfMouse_getPositionRenderWindow(game->win);
-
-    if (event.type == sfEvtClosed)
-        sfRenderWindow_close(game->win);
-    if (event.type == sfEvtKeyPressed)
-        return on_click(game, event);
-}
-
-int gameloop(hud_button_t *button __attribute__((unused)), wd_game_t *game)
+int gameloop(wd_game_t *game)
 {
     sfEvent event;
+    static int i = 0;
 
-    while (sfRenderWindow_isOpen(game->win)) {
-        while (sfRenderWindow_pollEvent(game->win, &event)) {
+    update_status(game);
+    sfRenderWindow_clear(game->win, sfBlack);
+    while (sfRenderWindow_pollEvent(game->win, &event)) {
+        analyse_win_events(game, event);
+        if (huds_events(game, event) != 0)
+            continue;
+        if (game->status == 1) {
             analyse_events(game, event);
         }
+    }
+    if (game->status) {
         render_map(game);
         hud_render(game->hud);
-        sfRenderWindow_display(game->win);
     }
-    free_game(game);
+    sfRenderWindow_display(game->win);
     return 0;
 }
 
@@ -59,13 +53,11 @@ int my_world(void)
 
     if (game == NULL)
         return 84;
-    while (sfRenderWindow_isOpen(game->win)) {
-        update_status(game);
-        while (sfRenderWindow_pollEvent(game->win, &event)) {
-            analyse_events(game, event);
-        }
-        render_map(game);
-        sfRenderWindow_display(game->win);
-    }
+    if ((game = init_huds(game)) == NULL)
+        return 84;
+    game->status = 0;
+    while (sfRenderWindow_isOpen(game->win))
+        gameloop(game);
+    free_game(game);
     return 0;
 }

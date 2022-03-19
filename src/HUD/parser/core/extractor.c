@@ -31,7 +31,7 @@ int hud_parser_get_balise(char *schemat)
         balise_length = my_strlen(balises[i]);
         if (str_start_with(schemat, balises[i], balise_length,
             balise_length) == 1) {
-            my_printf("found balises: %s\n", &balises[i][1]);
+            my_printf("\nfound balises: %s\n", &balises[i][1]);
             return i;
         }
     }
@@ -56,8 +56,7 @@ int hud_parser_extractor(char *schemat, hud_t *hud)
         schemat = &schemat[my_strlen(balises[type])];
         schemat = balises_func[type](schemat, hud);
     }
-    if (schemat != NULL)
-        return -1;
-    my_printf("HUD PARSING SUCCESFULL\n");
+    my_printf("================================HUD PARSING SUCCESFULL==========\
+======================\n\n\n");
     return 0;
 }

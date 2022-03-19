@@ -7,7 +7,7 @@
 
 #include "hud.h"
 
-void hud_event(hud_t *hud, sfEvent *event)
+int hud_event(hud_t *hud, sfEvent *event)
 {
-    hud_event_mouse(hud, event);
+    return hud_event_mouse(hud, event);
 }

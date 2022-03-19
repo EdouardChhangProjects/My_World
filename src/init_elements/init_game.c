@@ -48,8 +48,6 @@ wd_game_t *init_game(void)
 
 int free_game(wd_game_t *game)
 {
-    framebuffer_destroy(game->fb);
-    sfRenderWindow_destroy(game->win);
     free_matrix(game->matrix.base_matrix);
     free_matrix(game->matrix.rotx_matrix);
     free_matrix(game->matrix.roty_matrix);
