@@ -5,7 +5,6 @@
 ** my_world
 */
 
-
 #include <SFML/Graphics.h>
 #include <SFML/System/Clock.h>
 #include <SFML/Window/Mouse.h>
@@ -20,6 +19,11 @@
 #ifndef MY_WORLD_H
     #define MY_WORLD_H
 
+    extern char *wd_spritefile[];
+    extern int **map;
+    extern int **map_text;
+    extern sfVector2f wd_texCoords[];
+
     typedef struct framebuffer_s {
         unsigned int width;
         unsigned int height;
@@ -32,6 +36,7 @@
         int **map;
         int height;
         int width;
+        float fov;
     } wd_map_t;
 
     typedef enum wd_dir_e {
@@ -59,10 +64,7 @@
     };
 
     typedef struct wd_game_s {
-        int map_height;
-        int map_width;
-        int angle_x;
-        int angle_y;
+        sfVector2i angle;
         framebuffer_t *fb;
         sfRenderWindow *win;
         wd_matrix4x4_t matrix;
@@ -74,6 +76,12 @@
 
     } wd_game_t;
 
+    #if defined(__GNUC__) && __GNUC__ >= 7
+        #define FALL_THROUGH __attribute__ ((fallthrough))
+    #else
+        #define FALL_THROUGH ((void)0)
+    #endif
+
     #define HELP "assets/help.txt"
 
     #define WIDTH 1920
@@ -82,12 +90,10 @@
     #define FPS 80
     #define MAP_X 6
     #define MAP_Y 6
-    #define FOV 45
-    #define FNEAR 1.0
-    #define FFAR 10.0
-    #define FOV 90.0
-    #define FOVRAD  (1.0 / tan(FOV * 0.5 / 180.0f * M_PI));
-
+    #define FNEAR 40.0
+    #define FFAR 50.0
+    #define FOV 45.0
+    #define FOVRAD(x)  (1.0 / tan(x * 0.5 / 180.0f * M_PI))
 
     typedef enum wd_spritetype {
         GRASS,
@@ -124,15 +130,20 @@
             (sfVector2f) {.x = 0, .y = 16}
     };
 
+int gameloop(wd_game_t *game);
+float **init_proj_matrix();
+wd_game_t *init_huds(wd_game_t *game);
+void analyse_events(wd_game_t *game, sfEvent event);
+void analyse_win_events(wd_game_t *game, sfEvent event);
+int huds_events(wd_game_t *game, sfEvent event);
+char *file_to_str(char *filepath);
 int check_env(char **env);
 int print_help(void);
 sfRenderWindow *render_window(void);
-int gameloop(wd_game_t *game);
 int render_map(wd_game_t *game);
 void *my_memset(int size, char *str);
 framebuffer_t *clean_framebuffer(framebuffer_t *fb);
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
-void framebuffer_destroy(framebuffer_t *framebuffer);
 void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
 wd_game_t *init_game(void);
 int render_map(wd_game_t*game);
@@ -150,14 +161,16 @@ float **multiply_matrix(float **matrix1, float **matrix2);
 sfVector3f apply_matrix(sfVector3f vector, float **matrix);
 void rotate_matrix_x(wd_game_t *game, double angle_x);
 void rotate_matrix_y(wd_game_t *game, double angle_y);
-float **init_proj_matrix();
+float **init_proj_matrix(void);
 int calc_end_matrix(wd_game_t *game);
+hud_t *init_hud(sfRenderWindow * win);
+hud_t *init_menu(sfRenderWindow * win, wd_game_t *game);
 int free_states(sfRenderStates *states);
 int normalize_angle(wd_game_t *game);
-wd_game_t *init_huds(wd_game_t *game);
-void analyse_events(wd_game_t *game, sfEvent event);
-void analyse_win_events(wd_game_t *game, sfEvent event);
-int huds_events(wd_game_t *game, sfEvent event);
-char *file_to_str(char *filepath);
+int free_matrix(float **matrix);
+int free_game(wd_game_t *game);
+void on_click(wd_game_t *game, sfEvent event);
+int update_dir(wd_game_t *game);
+void update_proj_matrix(wd_game_t *game);
 
 #endif

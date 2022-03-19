@@ -22,9 +22,10 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/HUD/parser/utils/skip_balise.c		\
 		src/HUD/engine/utils/draw_rect.c		\
 		src/HUD/parser/core/contructor.c		\
-		src/init_elements/init_matrix.c			\
 		src/init_elements/init_window.c			\
+		src/init_elements/init_matrix.c			\
 		src/HUD/parser/core/extractor.c			\
+		src/matrix/update_proj_matrix.c			\
 		src/handle_errors/print_help.c			\
 		src/isometry/normalize_angle.c			\
 		src/HUD/engine/create/button.c			\
@@ -57,7 +58,10 @@ SRC	=	src/HUD/components/buttons/set/pos_size.c	\
 		src/isometry/points.c				\
 		src/my_world/events.c				\
 		src/utils/my_calloc.c				\
-		src/my_world/hud.c
+		src/my_world/maps.c				\
+		src/my_world/hud.c				\
+		src/events.c					\
+		src/global.c
 
 OBJ = $(SRC:.c=.o)
 

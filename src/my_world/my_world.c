@@ -7,8 +7,6 @@
 
 #include "my_world.h"
 
-
-
 void huds_render(wd_game_t *game)
 {
     if (game->menus.main == true)

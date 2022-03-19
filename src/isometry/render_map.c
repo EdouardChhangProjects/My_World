@@ -25,11 +25,11 @@ int render_map(wd_game_t*game)
         for (int x = 0; x < 6; ++x)
             print_point(x, y, map[x][y], game);
     }
-    draw_lines(game);
     sfTexture_updateFromPixels(game->fb->texture, game->fb->pixels, WIDTH,
                                HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(game->win, game->fb->sprite, NULL);
     update_dir(game);
+    draw_lines(game);
     draw_spritemap(game);
     return 0;
 }

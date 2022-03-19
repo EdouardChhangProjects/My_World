@@ -22,8 +22,3 @@ sfRenderStates *init_text_state(wd_spritetype_e type)
     states->texture = texture;
     return states;
 }
-
-void destroy_text_state(sfRenderStates *states)
-{
-    sfShader_destroy(states->shader);
-}
