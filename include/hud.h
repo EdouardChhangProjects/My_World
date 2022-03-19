@@ -109,13 +109,14 @@ sfTexture *hud_texture_set(char *path);
 list_t *hud_action_append(list_t *actions, char *name,
 void (*function)(hud_button_t *self, void *param), void *param);
 hud_action_t *hud_action_get(hud_t *hud, char *name);
-void hud_event_mouse(hud_t *hud, sfEvent *event);
-void hud_event(hud_t *hud, sfEvent *event);
+int hud_event_mouse(hud_t *hud, sfEvent *event);
+int hud_event(hud_t *hud, sfEvent *event);
 hud_button_t *hud_button_init(void);
 void hud_button_render(sfRenderWindow *win, hud_button_t *button,
 sfVector2f view_pos);
 void hud_button_set_pos(hud_button_t *button, int x, int y);
 void hud_button_set_size(hud_button_t *button, int x, int y);
 void hud_button_set_border_size(hud_button_t *button, sfFloatRect borderWidth);
+void free_char_arr(char **arr);
 
 #endif

@@ -6,4 +6,4 @@
 <button@pos={500:0:100:100};action=but6@/>
 <button@pos={600:0:100:100};action=but7@/>
 <button@pos={700:0:100:100};action=but8@/>
-<button@pos={500:100:100:100};action=test2;color={0:0:0:0};border=false;action=lititoto;texture=assets/buttons/pause.png@/>
+<button@pos={1180:0:100:100};color={0:0:0:0};actionColor={0:0:0:0};border=false;action=toogle_pause;texture=assets/buttons/pause.png@/>

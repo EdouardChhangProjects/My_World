@@ -22,7 +22,6 @@ int render_map(wd_game_t*game)
 {
     clean_framebuffer(game->fb);
     for (int y = 0; y < 6; ++y) {
-        sfRenderWindow_clear(game->win, sfBlack);
         for (int x = 0; x < 6; ++x)
             print_point(x, y, map[x][y], game);
     }

@@ -33,13 +33,11 @@ char *file_to_str(char *filepath)
         return NULL;
     if ((size = get_file_size(filepath)) == -1)
         return NULL;
-    my_printf("size = %d\n", size);
     buff = malloc(sizeof(char) * (size + 2));
     if (read(filedesc, buff, size) < 1)
         return NULL;
     buff[size] = '\n';
     buff[size + 1] = '\0';
     close(filedesc);
-    my_printf("buff = %s\n", buff);
     return buff;
 }

@@ -25,13 +25,13 @@ char *hud_parser_get_key(char **keys_arr, char *key)
     if (keys_arr == NULL || keys_arr[0] == NULL)
         return NULL;
     for (i = 0; str_start_with(keys_arr[i], key,
-        key_length, key_length) == 0; i++) {
+        my_strlen(keys_arr[i]), key_length) == 0; i++) {
         if (keys_arr[i + 1] == NULL)
             return NULL;
     }
     tmpstr = keys_arr[i];
     for (; tmpstr[0] != '\0' && tmpstr[0] != '='; tmpstr++);
     for (; tmpstr[0] == ' ' || tmpstr[0] == '='; tmpstr++);
-    my_printf("\t ==> %s = %s\n", key, tmpstr);
+    my_printf("\t ==> %s %s\n", key, tmpstr);
     return my_strdup(tmpstr);
 }

@@ -49,6 +49,15 @@
         float **proj_matrix;
     } wd_matrix4x4_t;
 
+    struct menus_s {
+        bool main;
+        hud_t *main_hud;
+        bool pause;
+        hud_t *pause_hud;
+        bool save;
+        hud_t *save_hud;
+    };
+
     typedef struct wd_game_s {
         int map_height;
         int map_width;
@@ -57,9 +66,12 @@
         framebuffer_t *fb;
         sfRenderWindow *win;
         wd_matrix4x4_t matrix;
+        struct menus_s menus;
         hud_t *hud;
+        int status;
         wd_map_t *map;
         wd_dir_e dir;
+
     } wd_game_t;
 
     #define HELP "assets/help.txt"
@@ -112,37 +124,40 @@
             (sfVector2f) {.x = 0, .y = 16}
     };
 
-    int check_env(char **env);
-    int print_help(void);
-    sfRenderWindow *render_window(void);
-    int gameloop(hud_button_t *button __attribute__((unused)), wd_game_t *game);
-    int render_map(wd_game_t *game);
-    void *my_memset(int size, char *str);
-    framebuffer_t *clean_framebuffer(framebuffer_t *fb);
-    framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
-    void framebuffer_destroy(framebuffer_t *framebuffer);
-    void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
-    wd_game_t *init_game(void);
-    int render_map(wd_game_t*game);
-    sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2);
-    sfRenderStates *init_text_state(wd_spritetype_e type);
-    sfVector2f pos_3d_to_2d(int x, int y, int z, wd_game_t *game);
-    int draw_spritemap(wd_game_t *game);
-    void framebuffer_destroy(framebuffer_t *framebuffer);
-    double to_radiant(double angle);
-    int draw_lines(wd_game_t *game);
-    sfVector2f ***get_points(wd_game_t *game);
-    float **init_matrix(int empty);
-    int show_matrix(float **matrix);
-    float **multiply_matrix(float **matrix1, float **matrix2);
-    sfVector3f apply_matrix(sfVector3f vector, float **matrix);
-    void rotate_matrix_x(wd_game_t *game, double angle_x);
-    void rotate_matrix_y(wd_game_t *game, double angle_y);
-    float **init_proj_matrix();
-    int calc_end_matrix(wd_game_t *game);
-    hud_t *init_hud(sfRenderWindow * win);
-    hud_t *init_menu(sfRenderWindow * win, wd_game_t *game);
-    int free_states(sfRenderStates *states);
-    int normalize_angle(wd_game_t *game);
+int check_env(char **env);
+int print_help(void);
+sfRenderWindow *render_window(void);
+int gameloop(wd_game_t *game);
+int render_map(wd_game_t *game);
+void *my_memset(int size, char *str);
+framebuffer_t *clean_framebuffer(framebuffer_t *fb);
+framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
+void framebuffer_destroy(framebuffer_t *framebuffer);
+void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
+wd_game_t *init_game(void);
+int render_map(wd_game_t*game);
+sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2);
+sfRenderStates *init_text_state(wd_spritetype_e type);
+sfVector2f pos_3d_to_2d(int x, int y, int z, wd_game_t *game);
+int draw_spritemap(wd_game_t *game);
+void framebuffer_destroy(framebuffer_t *framebuffer);
+double to_radiant(double angle);
+int draw_lines(wd_game_t *game);
+sfVector2f ***get_points(wd_game_t *game);
+float **init_matrix(int empty);
+int show_matrix(float **matrix);
+float **multiply_matrix(float **matrix1, float **matrix2);
+sfVector3f apply_matrix(sfVector3f vector, float **matrix);
+void rotate_matrix_x(wd_game_t *game, double angle_x);
+void rotate_matrix_y(wd_game_t *game, double angle_y);
+float **init_proj_matrix();
+int calc_end_matrix(wd_game_t *game);
+int free_states(sfRenderStates *states);
+int normalize_angle(wd_game_t *game);
+wd_game_t *init_huds(wd_game_t *game);
+void analyse_events(wd_game_t *game, sfEvent event);
+void analyse_win_events(wd_game_t *game, sfEvent event);
+int huds_events(wd_game_t *game, sfEvent event);
+char *file_to_str(char *filepath);
 
 #endif

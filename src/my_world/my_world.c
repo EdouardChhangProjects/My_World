@@ -7,49 +7,37 @@
 
 #include "my_world.h"
 
-void on_click(wd_game_t *game, sfEvent event)
+
+
+void huds_render(wd_game_t *game)
 {
-    switch (event.key.code) {
-        case sfKeyEscape:
-            sfRenderWindow_close(game->win);
-        default:
-            return;
-        case sfKeyQ:
-            game->angle_x -= 4;
-        case sfKeyD:
-            game->angle_x += 2;
-            rotate_matrix_x(game, game->angle_x);
-            break;
-        case sfKeyZ:
-            game->angle_y += 4;
-        case sfKeyS:
-            game->angle_y -= 2;
-            rotate_matrix_y(game, game->angle_y);
-    }
-    calc_end_matrix(game);
-    normalize_angle(game);
+    if (game->menus.main == true)
+        hud_render(game->menus.main_hud);
+    if (game->menus.pause == true)
+        hud_render(game->menus.pause_hud);
+    if (game->menus.save == true)
+        hud_render(game->menus.save_hud);
 }
 
-void analyse_events(wd_game_t *game, sfEvent event)
-{
-    if (event.type == sfEvtKeyPressed)
-        return on_click(game, event);
-    hud_event_mouse(game->hud, &event);
-}
-
-int gameloop(hud_button_t *button __attribute__((unused)), wd_game_t *game)
+int gameloop(wd_game_t *game)
 {
     sfEvent event;
 
-    while (sfRenderWindow_isOpen(game->win)) {
+        sfRenderWindow_clear(game->win, sfBlack);
         while (sfRenderWindow_pollEvent(game->win, &event)) {
-            analyse_events(game, event);
+            analyse_win_events(game, event);
+            if (huds_events(game, event) != 0)
+                continue;
+            if (game->status == 1) {
+                analyse_events(game, event);
+            }
         }
-        render_map(game);
-        hud_render(game->hud);
+        if (game->status) {
+            render_map(game);
+            hud_render(game->hud);
+        }
+        huds_render(game);
         sfRenderWindow_display(game->win);
-    }
-    free_game(game);
     return 0;
 }
 
@@ -57,19 +45,16 @@ int my_world(void)
 {
     wd_game_t *game = init_game();
     hud_t *menu = NULL;
-
-    game->hud = init_hud(game->win);
     sfEvent event;
 
     if (game == NULL)
         return 84;
-    menu = init_menu(game->win, game);
+    if ((game = init_huds(game)) == NULL)
+        return 84;
+    game->status = 0;
     while (sfRenderWindow_isOpen(game->win)) {
-        while (sfRenderWindow_pollEvent(game->win, &event)) {
-            hud_event_mouse(menu, &event);
-        }
-        hud_render(menu);
-        sfRenderWindow_display(game->win);
+        gameloop(game);
     }
+    free_game(game);
     return 0;
 }

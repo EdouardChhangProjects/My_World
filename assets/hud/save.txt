@@ -1,0 +1,1 @@
+<button@pos={810:490:300:100};texture=assets/buttons/start.png;action=start_game;border=false;color={0:0:0:0};actionColor={0:0:0:0}@/>

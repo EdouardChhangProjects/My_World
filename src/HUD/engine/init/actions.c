@@ -26,8 +26,10 @@ hud_action_t *hud_action_get(hud_t *hud, char *name)
     list_t *actions = hud->actions;
 
     for (; actions != NULL; actions = actions->next) {
-        if (my_strcmp(name, ((hud_action_t *)actions->data)->name) == 0)
+        if (my_strcmp(name, ((hud_action_t *)actions->data)->name) == 0) {
             return actions->data;
+        }
     }
+    my_printerr("\t\t>>> action not found: %s\n", name);
     return NULL;
 }
