@@ -22,30 +22,36 @@ void update_status(wd_game_t *game)
     update_dir(game);
 }
 
+void render_huds(wd_game_t *game)
+{
+    if (game->menus.main == true)
+        hud_render(game->menus.main_hud);
+    if (game->menus.pause == true)
+        hud_render(game->menus.pause_hud);
+    if (game->menus.save == true)
+        hud_render(game->menus.save_hud);
+}
+
 int gameloop(wd_game_t *game)
 {
     sfEvent event;
     static int i = 0;
 
-        update_status(game);
-        sfRenderWindow_clear(game->win, sfBlack);
-        while (sfRenderWindow_pollEvent(game->win, &event)) {
-            analyse_win_events(game, event);
-            if (huds_events(game, event) != 0)
-                continue;
-            if (game->status == 1) {
-                analyse_events(game, event);
-            }
-        }
+    update_status(game);
+    sfRenderWindow_clear(game->win, sfBlack);
+    while (sfRenderWindow_pollEvent(game->win, &event)) {
+        analyse_win_events(game, event);
+        if (huds_events(game, event) != 0)
+            continue;
         if (game->status == 1) {
-            render_map(game);
-            hud_render(game->hud);
+            analyse_events(game, event);
         }
     }
-    if (game->status) {
+    if (game->status == 1) {
         render_map(game);
         hud_render(game->hud);
     }
+    render_huds(game);
     sfRenderWindow_display(game->win);
     return 0;
 }

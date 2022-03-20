@@ -10,64 +10,64 @@ override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib \
 override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr -lm
 
 SRC	=	src/HUD/components/buttons/set/pos_size.c	\
-		src/HUD/components/buttons/render/draw.c	\
 		src/HUD/components/buttons/init/struct.c	\
-		src/HUD/parser/core/array_constructor.c		\
+		src/HUD/components/buttons/render/draw.c	\
 		src/HUD/components/buttons/set/border.c		\
-		src/get_selected/get_selected_circle.c		\
+		src/HUD/parser/core/array_constructor.c		\
 		src/HUD/parser/utils/str_dup_from_to.c		\
+		src/get_selected/get_selected_circle.c		\
 		src/framebuffer/framebuffer_utils.c		\
 		src/init_elements/init_text_state.c		\
 		src/HUD/engine/utils/create_rect.c		\
-		src/HUD/parser/utils/skip_balise.c		\
 		src/HUD/parser/utils/file_to_str.c		\
+		src/HUD/parser/utils/skip_balise.c		\
 		src/utils/circleshape_contains.c		\
 		src/HUD/engine/utils/draw_rect.c		\
 		src/HUD/parser/core/contructor.c		\
-		src/matrix/update_proj_matrix.c			\
-		src/HUD/parser/core/extractor.c			\
-		src/init_elements/init_circle.c			\
 		src/init_elements/init_window.c			\
 		src/init_elements/init_matrix.c			\
+		src/init_elements/init_circle.c			\
+		src/HUD/parser/core/extractor.c			\
+		src/matrix/update_proj_matrix.c			\
 		src/handle_errors/print_help.c			\
-		src/HUD/engine/create/button.c			\
-		src/HUD/parser/core/get_keys.c			\
-		src/HUD/parser/button/action.c			\
 		src/isometry/normalize_angle.c			\
+		src/HUD/engine/create/button.c			\
+		src/HUD/parser/button/action.c			\
+		src/HUD/parser/core/get_keys.c			\
 		src/handle_errors/check_env.c			\
+		src/init_elements/init_game.c			\
+		src/isometry/draw_spritemap.c			\
 		src/utils/triangle_contains.c			\
 		src/HUD/engine/events/event.c			\
 		src/HUD/engine/init/actions.c			\
 		src/HUD/engine/init/texture.c			\
 		src/HUD/parser/button/parse.c			\
-		src/init_elements/init_game.c			\
-		src/isometry/draw_spritemap.c			\
-		src/matrix/calc_end_matrix.c			\
-		src/matrix/multiply_matrix.c			\
 		src/HUD/engine/events/clic.c			\
 		src/HUD/engine/render/draw.c			\
-		src/my_world/actions/menu.c			\
+		src/matrix/calc_end_matrix.c			\
+		src/matrix/multiply_matrix.c			\
 		src/isometry/pos_3d_to_2d.c			\
-		src/matrix/rotate_matrix.c			\
-		src/HUD/engine/init/init.c			\
+		src/my_world/actions/menu.c			\
 		src/isometry/draw_points.c			\
-		src/matrix/apply_matrix.c			\
-		src/utils/free_char_arr.c			\
-		src/isometry/render_map.c			\
+		src/HUD/engine/init/init.c			\
+		src/matrix/rotate_matrix.c			\
 		src/isometry/update_dir.c			\
-		src/matrix/show_matrix.c			\
-		src/matrix/free_matrix.c			\
+		src/isometry/render_map.c			\
+		src/utils/free_char_arr.c			\
+		src/matrix/apply_matrix.c			\
 		src/isometry/draw_line.c			\
-		src/utils/free_states.c				\
+		src/matrix/free_matrix.c			\
+		src/matrix/show_matrix.c			\
 		src/my_world/my_world.c				\
+		src/utils/free_states.c				\
 		src/tools/level_tool.c				\
+		src/isometry/points.c				\
+		src/my_world/events.c				\
 		src/utils/my_calloc.c				\
 		src/utils/my_usleep.c				\
-		src/isometry/points.c				\
-		src/my_world/event.c				\
+		src/my_world/maps.c				\
 		src/my_world/hud.c				\
-		src/global.c					\
-		src/events.c
+		src/global.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -38,6 +38,10 @@ wd_map_t *init_map(char **av, int ac, wd_game_t *game)
     } else
         game = init_default_map(game);
     game->map->fov = (game->map->width * game->map->height);
+    game->map->points = my_memset(sizeof(sfVector2f *) * (game->map->width + 1), NULL);
+    for (int i = 0; i < game->map->width; ++i)
+        game->map->points[i] = my_memset(sizeof(sfVector2f) * game->map->height, NULL);
+    game->map->selected = (sfVector2i){.x = -1, .y = -1};
     return game;
 }
 
