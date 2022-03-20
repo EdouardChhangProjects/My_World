@@ -44,7 +44,7 @@ char **ducplicate_char_arr(char **arr)
     if (arr == NULL || arr[0] == NULL)
         return NULL;
     len = my_char_tabl_len(arr) - 1;
-    if ((res = malloc(sizeof(char*) * (len + 1))) == NULL)
+    if ((res = malloc(sizeof(char *) * (len + 1))) == NULL)
         return NULL;
     for (int  i = 0; i < len; i++) {
         if ((res[i] = my_strdup(arr[i])) == NULL)

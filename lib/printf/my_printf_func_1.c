@@ -12,7 +12,7 @@
 void my_printf_str(va_list args, char *formater)
 {
 
-    char *str = va_arg(args, char*);
+    char *str = va_arg(args, char *);
     int nbr = my_getnbr(formater);
 
     if (nbr != 0) {

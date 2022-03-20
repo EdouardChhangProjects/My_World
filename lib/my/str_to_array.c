@@ -18,7 +18,7 @@ char **str_to_array(char *str, char *separators)
 
     if (item_count == -84)
         return NULL;
-    arr = malloc(sizeof(char*) * (item_count + 1));
+    arr = malloc(sizeof(char *) * (item_count + 1));
     arr[item_count] = NULL;
     for (int i = 0; i < item_count; i++) {
         count = count_char_before_separator(tmpstr, separators);

@@ -5,13 +5,6 @@
 ** char_arr_utils
 */
 
-/*
-** EPITECH PROJECT, 2021
-** B-PSU-100-BDX-1-1-myls-maxime.senard
-** File description:
-** utils
-*/
-
 #include <stddef.h>
 #include <stdlib.h>
 #include "my.h"
@@ -83,7 +76,7 @@ unsigned char *add_to_ustr(unsigned char *str, unsigned char c)
 
     if (str == NULL)
         return NULL;
-    length = my_strlen((char*)str);
+    length = my_strlen((char *)str);
     res = malloc(sizeof(unsigned char) * (length + 2));
     if (res == NULL)
         return NULL;

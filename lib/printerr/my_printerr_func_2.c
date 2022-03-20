@@ -11,7 +11,7 @@
 
 void my_printerr_show(va_list args, char *)
 {
-    my_showstr_err(va_arg(args, char*));
+    my_showstr_err(va_arg(args, char *));
 }
 
 void my_printerr_unint(va_list args, char *)

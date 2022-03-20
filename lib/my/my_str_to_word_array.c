@@ -72,7 +72,7 @@ char **my_str_to_word_array(char const *str)
     w_props[0] = word_index;
     w_props[1] = word_length;
     w_props[2] = is_word;
-    res = malloc(sizeof(char*) * (my_nb_word_in_str(str, d) + 1));
+    res = malloc(sizeof(char *) * (my_nb_word_in_str(str, d) + 1));
     res = compute_to_arr(d, res, w_props, str);
     return res;
 }

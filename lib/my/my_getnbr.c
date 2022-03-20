@@ -6,6 +6,7 @@
 */
 
 int my_long_to_int(long nb);
+
 int my_strlen(char const *str);
 
 static int my_find_nbr(char nbr)

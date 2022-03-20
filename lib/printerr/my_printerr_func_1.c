@@ -12,7 +12,7 @@
 void my_printerr_str(va_list args, char *formater)
 {
 
-    char *str = va_arg(args, char*);
+    char *str = va_arg(args, char *);
     int nbr = my_getnbr(formater);
 
     if (nbr != 0) {
@@ -32,7 +32,7 @@ void my_printerr_int(va_list args, char *formater)
         my_put_nbr_err(nb);
 }
 
-void my_printerr_char(va_list args, char *)
+void my_printerr_char(va_list args, char *a)
 {
     my_putchar_err(va_arg(args, int));
 }

@@ -67,7 +67,7 @@ const char *format, va_list args)
     int j = 0;
     char *formater = malloc(sizeof(char) * 100);
 
-    while (!is_in_str((char*)form_terminator, format[i + j]) &&
+    while (!is_in_str((char *)form_terminator, format[i + j]) &&
     i + j < len_format) {
         formater[j] = format[i + j];
         j++;

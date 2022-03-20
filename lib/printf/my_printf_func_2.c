@@ -11,7 +11,7 @@
 
 void my_printf_show(va_list args, char *)
 {
-    my_showstr(va_arg(args, char*));
+    my_showstr(va_arg(args, char *));
 }
 
 void my_printf_unint(va_list args, char *)

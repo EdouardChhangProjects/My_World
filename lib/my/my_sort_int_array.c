@@ -24,7 +24,7 @@ void my_sort_int_array(int *tab, int size)
     int **res;
     int j = 0;
 
-    res = malloc(sizeof(int*) * size + 1);
+    res = malloc(sizeof(int *) * size + 1);
     for (int i = 0; i <= size; i++) {
         res[i] = malloc(sizeof(int) * 2 + 1);
         res[i][0] = tab[i];
