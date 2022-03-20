@@ -14,7 +14,7 @@ sfRenderStates *init_text_state(wd_spritetype_e type)
             "assets/ice_set.png",
             "assets/fire_set.png"};
     sfRenderStates *states = my_memset(sizeof(sfRenderStates), NULL);
-    sfTexture *texture = sfTexture_createFromFile(spritefile[type - 1],
+    sfTexture *texture = sfTexture_createFromFile(wd_spritefile[type],
                                                   NULL);
 
     if (texture == NULL || states == NULL) {

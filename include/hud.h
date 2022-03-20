@@ -10,6 +10,8 @@
 #include <SFML/Window/Mouse.h>
 #include "list.h"
 #include "my.h"
+#include "printf.h"
+#include "printerr.h"
 
 #ifndef HUD_H
     #define HUD_H

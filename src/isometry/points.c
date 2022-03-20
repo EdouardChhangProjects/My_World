@@ -31,12 +31,12 @@ sfVector2f *get_point(int x, int y, int z, wd_game_t *game)
 
 sfVector2f **get_points(wd_game_t *game)
 {
-    sfVector2f **points = my_memset(sizeof(sfVector2f *) * (MAP_Y + 1), NULL);
+    sfVector2f **points = my_memset(sizeof(sfVector2f *) * (game->map->height + 1), NULL);
 
-    for (int x = 0; x < MAP_X; ++x)
-        points[x] = my_memset(sizeof(sfVector2f) * (MAP_X + 1), NULL);
-    for (int y = 0; y < MAP_Y; ++y)
-        for (int x = 0; x < MAP_X; ++x)
+    for (int x = 0; x < game->map->width; ++x)
+        points[x] = my_memset(sizeof(sfVector2f) * (game->map->width + 1), NULL);
+    for (int y = 0; y < game->map->height; ++y)
+        for (int x = 0; x < game->map->width; ++x)
             points[y][x] = pos_3d_to_2d(x, y, map[x][y], game);
     return points;
 }

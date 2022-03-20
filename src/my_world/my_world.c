@@ -27,14 +27,19 @@ int gameloop(wd_game_t *game)
     sfEvent event;
     static int i = 0;
 
-    update_status(game);
-    sfRenderWindow_clear(game->win, sfBlack);
-    while (sfRenderWindow_pollEvent(game->win, &event)) {
-        analyse_win_events(game, event);
-        if (huds_events(game, event) != 0)
-            continue;
+        update_status(game);
+        sfRenderWindow_clear(game->win, sfBlack);
+        while (sfRenderWindow_pollEvent(game->win, &event)) {
+            analyse_win_events(game, event);
+            if (huds_events(game, event) != 0)
+                continue;
+            if (game->status == 1) {
+                analyse_events(game, event);
+            }
+        }
         if (game->status == 1) {
-            analyse_events(game, event);
+            render_map(game);
+            hud_render(game->hud);
         }
     }
     if (game->status) {
@@ -45,10 +50,9 @@ int gameloop(wd_game_t *game)
     return 0;
 }
 
-int my_world(void)
+int my_world(char **av, int ac)
 {
-    wd_game_t *game = init_game();
-    hud_t *menu = NULL;
+    wd_game_t *game = init_game(av, ac);
     sfEvent event;
 
     if (game == NULL)

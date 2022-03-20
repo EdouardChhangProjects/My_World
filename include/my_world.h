@@ -52,6 +52,8 @@
 
     typedef struct wd_map_s {
         int **map;
+        int **map_text;
+        char *path;
         int height;
         int width;
         float fov;
@@ -119,22 +121,22 @@
         FIRE
     } wd_spritetype_e;
 
+    int my_world(char **av, int ac);
     int gameloop(wd_game_t *game);
-    float **init_proj_matrix();
     wd_game_t *init_huds(wd_game_t *game);
     void analyse_events(wd_game_t *game, sfEvent event);
     void analyse_win_events(wd_game_t *game, sfEvent event);
     int huds_events(wd_game_t *game, sfEvent event);
+    char *file_to_str(char *filepath);
     int check_env(char **env);
     int print_help(void);
     sfRenderWindow *render_window(void);
-    int render_map(wd_game_t *game);
     void *my_memset(int size, char *str);
-    framebuffer_t *clean_framebuffer(framebuffer_t *fb);
+    wd_game_t *init_game(char **av, int ac);
+    wd_game_t *parse_map(wd_game_t *game, char *filepath);
     framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
     void framebuffer_destroy(framebuffer_t *framebuffer);
     void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
-    wd_game_t *init_game(void);
     int render_map(wd_game_t*game);
     sfVertexArray *create_line(sfVector2f point1, sfVector2f point2);
     sfRenderStates *init_text_state(wd_spritetype_e type);

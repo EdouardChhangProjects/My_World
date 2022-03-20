@@ -26,7 +26,7 @@ int hud_event_analyze_mouse_input(hud_t *hud, sfEvent *event,
     int used = 0;
 
     for (list_t *buttons = hud->buttons; buttons != NULL;
-         buttons = buttons->next) {
+        buttons = buttons->next) {
         if (((hud_button_t *)buttons->data)->hidden == false &&
             sfIntRect_contains(&((hud_button_t *)buttons->data)->pos,
             mouse_pos.x + offset.x, mouse_pos.y + offset.y) == sfTrue &&

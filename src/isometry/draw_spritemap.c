@@ -16,13 +16,14 @@ int draw_spritetile(wd_game_t *game, unsigned int x, unsigned int y,
     int tmpx = 0;
     int tmpy = 0;
 
-    states = init_text_state(map_text[x][y]);
+    states = init_text_state(game->map->map_text[x][y]);
     sfVertexArray_clear(vertex_array);
     for (unsigned int i = 0; i < 4; ++i) {
         tmpx = (int)(x) + ((i % 2) ^ (i >> 1));
         tmpy = (int)(y) + (i >> 1);
         vertex.texCoords = wd_texCoords[i];
-        vertex.position = pos_3d_to_2d(tmpx, tmpy, map[tmpx][tmpy], game);
+        vertex.position = pos_3d_to_2d(tmpx, tmpy, game->map->map[tmpx][tmpy],
+        game);
         vertex.color = sfWhite;
         sfVertexArray_append(vertex_array, vertex);
     }
