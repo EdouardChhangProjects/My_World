@@ -15,13 +15,13 @@ int draw_map(wd_game_t *game)
     int y = 0;
 
     sfVertexArray_setPrimitiveType(vertexarr, sfQuads);
-    for (int i = 0; i < (MAP_X) * (MAP_Y); ++i) {
-        x = update_x(i, game, MAP_X, MAP_Y);
-        y = update_y(i, game, MAP_X, MAP_Y);
+    for (int i = 0; i < (game->map->width) * (game->map->height); ++i) {
+        x = update_x(i, game, game->map->width, game->map->height);
+        y = update_y(i, game, game->map->width, game->map->height);
         if (sfKeyboard_isKeyPressed(sfKeyH))
             my_usleep(0.1 * 1000000);
         draw_line(game, game->map->points, y, x);
-        if (x != MAP_X - 1 && y != MAP_Y - 1)
+        if (x != game->map->width - 1 && y != game->map->height - 1)
             draw_spritetile(game, x, y, vertexarr);
         circleshape_draw(game, circle, x, y);
         if (sfKeyboard_isKeyPressed(sfKeyH))

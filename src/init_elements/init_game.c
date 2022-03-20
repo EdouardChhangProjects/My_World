@@ -35,7 +35,7 @@ wd_game_t *init_map(char **av, int ac, wd_game_t *game)
             return NULL;
     } else
         game = init_default_map(game);
-    game->map->fov = (game->map->width * game->map->height);
+    game->map->fov = (game->map->width * game->map->height) * 2;
     game->map->points = my_memset(sizeof(sfVector2f *) *
             (game->map->width + 1), NULL);
     for (int i = 0; i < game->map->width; ++i)
@@ -53,9 +53,9 @@ wd_game_t *init_game(char **av, int ac)
         return NULL;
     if ((game->win = render_window()) == NULL)
         return NULL;
-    if ((game->map = init_map(av, ac, game)) == NULL)
+    if ((game = init_map(av, ac, game)) == NULL)
         return NULL;
-    game->angle = (wd_vector2d_t){.x = 250, .y = 150};
+    game->angle = (wd_vector2d_t){.x = 250, .y = 100};
     game->matrix.base_matrix = init_matrix(0);
     game->matrix.rotx_matrix = init_matrix(1);
     game->matrix.roty_matrix = init_matrix(1);

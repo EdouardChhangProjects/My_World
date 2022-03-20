@@ -18,6 +18,8 @@ void update_status(wd_game_t *game)
             level_tool(game);
         if (game->map->type == UNIFORM)
             union_tool(game);
+        if (game->map->type == SKIN)
+            skin_tool(game);
     }
     update_dir(game);
 }
@@ -43,9 +45,8 @@ int gameloop(wd_game_t *game)
         analyse_win_events(game, event);
         if (huds_events(game, event) != 0)
             continue;
-        if (game->status == 1) {
+        if (game->status == 1)
             analyse_events(game, event);
-        }
     }
     if (game->status == 1) {
         render_map(game);

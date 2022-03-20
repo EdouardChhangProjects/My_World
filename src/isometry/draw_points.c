@@ -13,9 +13,9 @@ int draw_points(wd_game_t *game)
     int x = 0;
     int y = 0;
 
-    for (int i = 0; i < MAP_X * MAP_Y; ++i) {
-        x = i % MAP_X;
-        y = i / MAP_Y;
+    for (int i = 0; i < game->map->width * game->map->height; ++i) {
+        x = i % game->map->width;
+        y = i / game->map->height;
         circleshape_draw(game, circle, x, y);
     }
     sfCircleShape_destroy(circle);

@@ -44,6 +44,7 @@ SRC	=	src/hud/components/buttons/set/pos_size.c	\
 		src/isometry/draw_spritemap.c			\
 		src/matrix/calc_end_matrix.c			\
 		src/matrix/multiply_matrix.c			\
+		src/my_world/actions/tools.c			\
 		src/hud/engine/events/clic.c			\
 		src/hud/engine/render/draw.c			\
 		src/my_world/actions/menu.c			\

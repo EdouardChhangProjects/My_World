@@ -55,8 +55,8 @@ static wd_game_t *get_map_value(wd_game_t *game, char **map_info)
         return NULL;
     if ((game->map->map_text = char_arr_to_int_arr_arr(map_text_char)) == NULL)
         return NULL;
-    game->map->height = for_str_in_str(map_info[0], "\n") + 1;
-    game->map->width = for_str_in_str(map_char[0], " ") + 1;
+    game->map->height = for_char_in_str(map_info[0], '\n') + 1;
+    game->map->width = for_char_in_str(map_char[0], ' ') + 1;
     free_char_arr(map_char);
     free_char_arr(map_text_char);
     return game;
