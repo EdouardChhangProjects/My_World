@@ -7,10 +7,22 @@
 
 #include "hud.h"
 
+static sfVertexArray *hud_create_rect_generate(sfVertex vertex1,
+sfVertex vertex2, sfVertex vertex3, sfVertex vertex4)
+{
+    sfVertexArray *vertex_array = sfVertexArray_create();
+
+    sfVertexArray_append(vertex_array, vertex1);
+    sfVertexArray_append(vertex_array, vertex2);
+    sfVertexArray_append(vertex_array, vertex3);
+    sfVertexArray_append(vertex_array, vertex4);
+    sfVertexArray_setPrimitiveType(vertex_array, sfQuads);
+    return vertex_array;
+}
+
 sfVertexArray *hud_create_rect(sfFloatRect pos, sfColor color,
 sfVector2f view_pos, sfTexture *texture)
 {
-    sfVertexArray *vertex_array = sfVertexArray_create();
     sfVector2u texture_size;
     sfVertex vertex1 = {.position = {.x = pos.left + view_pos.x,
     .y = pos.top + view_pos.y}, .color = color};
@@ -29,10 +41,5 @@ sfVector2f view_pos, sfTexture *texture)
         .y = (float)texture_size.y};
         vertex4.texCoords = (sfVector2f){.x = 0, .y = (float)texture_size.y};
     }
-    sfVertexArray_append(vertex_array, vertex1);
-    sfVertexArray_append(vertex_array, vertex2);
-    sfVertexArray_append(vertex_array, vertex3);
-    sfVertexArray_append(vertex_array, vertex4);
-    sfVertexArray_setPrimitiveType(vertex_array, sfQuads);
-    return (vertex_array);
+    return hud_create_rect_generate(vertex1, vertex2, vertex3, vertex4);
 }
