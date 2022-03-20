@@ -49,7 +49,7 @@ void skin_tool(wd_game_t *game)
     sfVector2i tile;
     sfVector2i tmp = sfMouse_getPositionRenderWindow(game->win);
     sfVector2f mouse = {.x = (float)tmp.x, .y = (float)tmp.y};
-    
+
     for (int i = 0; i < (game->map->width - 1) * (game->map->height - 1); ++i) {
         tile.x = update_x(i, game, game->map->width - 1, game->map->height - 1);
         tile.y = update_y(i, game, game->map->width - 1, game->map->height - 1);

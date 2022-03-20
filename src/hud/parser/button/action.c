@@ -11,8 +11,8 @@ hud_button_t *hud_parser_button_set_action(hud_t *hud, hud_button_t *button,
 const char *name)
 {
     for (list_t *action = hud->actions; action != NULL; action = action->next) {
-        if (my_strcmp(((hud_action_t*)action->data)->name, name) == 0) {
-            button->action = ((hud_action_t*)action->data);
+        if (my_strcmp(((hud_action_t *)action->data)->name, name) == 0) {
+            button->action = ((hud_action_t *)action->data);
             return button;
         }
     }
