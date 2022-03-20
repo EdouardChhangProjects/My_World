@@ -36,7 +36,7 @@ int gameloop(wd_game_t *game)
 {
     sfEvent event;
     static int i = 0;
-
+    
     update_status(game);
     sfRenderWindow_clear(game->win, sfBlack);
     while (sfRenderWindow_pollEvent(game->win, &event)) {

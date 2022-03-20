@@ -39,6 +39,6 @@ sfVector2f **get_points(wd_game_t *game)
         game->map->width + 1), NULL);
     for (int y = 0; y < game->map->height; ++y)
         for (int x = 0; x < game->map->width; ++x)
-            points[y][x] = pos_3d_to_2d(x, y, map[x][y], game);
+            points[y][x] = pos_3d_to_2d(x, y, game->map->map[x][y], game);
     return points;
 }

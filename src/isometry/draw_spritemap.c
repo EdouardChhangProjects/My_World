@@ -18,11 +18,11 @@ sfVertexArray *vertex_array)
     states = init_text_state(game->map->map_text[x][y]);
     sfVertexArray_clear(vertex_array);
     for (unsigned int i = 0; i < 4; ++i) {
-        tmpx = (int)(x) + ((i % 2) ^ (i >> 1));
-        tmpy = (int)(y) + (i >> 1);
-        vertex.texCoords = wd_texCoords[i];
-        vertex.position = pos_3d_to_2d(tmpx, tmpy, game->map->map[tmpx][tmpy],
-        game);
+        tmpx = ((i % 2) ^ (i >> 1));
+        tmpy = (i >> 1);
+        vertex.texCoords = (sfVector2f){.x = tmpx * 16, .y = tmpy * 16};
+        vertex.position = pos_3d_to_2d(tmpx + x, tmpy + y,
+                        game->map->map[tmpx][tmpy], game);
         vertex.color = sfWhite;
         sfVertexArray_append(vertex_array, vertex);
     }

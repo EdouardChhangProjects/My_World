@@ -7,7 +7,7 @@
 
 #include "my_world.h"
 
-static wd_dir_e invert_dir(wd_dir_e dir)
+static wd_dir_t invert_dir(wd_dir_t dir)
 {
     switch (dir) {
         case SE:

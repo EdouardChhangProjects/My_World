@@ -12,23 +12,21 @@ wd_game_t *init_default_map(wd_game_t *game)
     game->map->map = malloc(sizeof(int *) * (6 + 1));
     for (int i = 0; i < 6; i++) {
         game->map->map[i] = malloc(sizeof(int) * (6 + 1));
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < 6; j++)
             game->map->map[i][j] = 0;
-        }
     }
     game->map->map_text = malloc(sizeof(int *) * (5 + 1));
     for (int i = 0; i < 5; i++) {
         game->map->map_text[i] = malloc(sizeof(int) * (5 + 1));
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 5; j++)
             game->map->map_text[i][j] = 3;
-        }
     }
     game->map->width = 6;
     game->map->height = 6;
     return game;
 }
 
-wd_map_t *init_map(char **av, int ac, wd_game_t *game)
+wd_game_t *init_map(char **av, int ac, wd_game_t *game)
 {
     game->map = my_memset(sizeof(wd_map_t), NULL);
 
@@ -38,11 +36,11 @@ wd_map_t *init_map(char **av, int ac, wd_game_t *game)
     } else
         game = init_default_map(game);
     game->map->fov = (game->map->width * game->map->height);
-    game->map->points = my_memset(sizeof(sfVector2f *) * (game->map->width + 1),
-    NULL);
+    game->map->points = my_memset(sizeof(sfVector2f *) *
+            (game->map->width + 1), NULL);
     for (int i = 0; i < game->map->width; ++i)
-        game->map->points[i] = my_memset(sizeof(sfVector2f) * game->map->height,
-        NULL);
+        game->map->points[i] = my_memset(sizeof(sfVector2f) *
+                (game->map->height + 1), NULL);
     game->map->selected = (sfVector2i){.x = -1, .y = -1};
     return game;
 }
@@ -53,7 +51,6 @@ wd_game_t *init_game(char **av, int ac)
 
     if (game == NULL)
         return NULL;
-    game->fb = framebuffer_create(WIDTH, HEIGHT);
     if ((game->win = render_window()) == NULL)
         return NULL;
     if ((game->map = init_map(av, ac, game)) == NULL)

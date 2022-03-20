@@ -19,23 +19,18 @@
 #ifndef MY_WORLD_H
     #define MY_WORLD_H
 
-    extern char *wd_spritefile[];
-    extern int **map;
-    extern int **map_text;
-    extern sfVector2f wd_texCoords[];
-
     typedef enum wd_dir_e {
         SE,
         NO,
         NE,
         SO
-    } wd_dir_e;
+    } wd_dir_t;
 
     typedef enum wd_type_e {
         LEVEL,
         UNIFORM,
         SKIN
-    } wd_type_e;
+    } wd_type_t;
 
     typedef struct wd_vector2d_s {
         double x;
@@ -60,7 +55,7 @@
         sfVector2f **points;
         sfVertexArray **line;
         sfVector2i selected;
-        wd_type_e type;
+        wd_type_t type;
     } wd_map_t;
 
     typedef struct wd_matrix4x4_s {
@@ -89,7 +84,7 @@
         hud_t *hud;
         int status;
         wd_map_t *map;
-        wd_dir_e dir;
+        wd_dir_t dir;
 
     } wd_game_t;
 
@@ -119,7 +114,7 @@
         SWAMP,
         ICE,
         FIRE
-    } wd_spritetype_e;
+    } wd_spritetype_t;
 
     int my_world(char **av, int ac);
     int gameloop(wd_game_t *game);
@@ -139,7 +134,7 @@
     void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
     int render_map(wd_game_t*game);
     sfVertexArray *create_line(sfVector2f point1, sfVector2f point2);
-    sfRenderStates *init_text_state(wd_spritetype_e type);
+    sfRenderStates *init_text_state(wd_spritetype_t type);
     sfVector2f pos_3d_to_2d(int x, int y, int z, wd_game_t *game);
     int draw_spritemap(wd_game_t *game);
     double to_radiant(double angle);
@@ -176,5 +171,7 @@
     void level_tool(wd_game_t *game);
     void union_tool(wd_game_t *game);
     int tile_contains(wd_game_t *game, sfVector2i point, sfVector2f dot);
-
+    void change_zoom(wd_game_t *game, sfEvent event);
+    void change_angle(wd_game_t *game, sfEvent event);
+    
 #endif

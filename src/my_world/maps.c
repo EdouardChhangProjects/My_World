@@ -30,7 +30,7 @@ int **char_arr_to_int_arr_arr(char **arr)
     int size = my_char_tabl_len(arr) - 1;
     char **char_arr = NULL;
 
-    if ((int_arr = malloc(sizeof(int*) * size)) == NULL)
+    if ((int_arr = malloc(sizeof(int *) * size)) == NULL)
         return NULL;
     for (int i = 0; i < size; i++) {
         if ((char_arr = str_to_array(arr[i], " \0")) == NULL)

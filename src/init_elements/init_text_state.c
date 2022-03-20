@@ -7,7 +7,7 @@
 
 #include "my_world.h"
 
-sfRenderStates *init_text_state(wd_spritetype_e type)
+sfRenderStates *init_text_state(wd_spritetype_t type)
 {
     char *spritefile[] = {"assets/basic_green.png",
             "assets/swamp_set.png",
