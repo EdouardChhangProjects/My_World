@@ -41,7 +41,6 @@ int hud_parser_get_balise(char *schemat)
 
 int hud_parser_extractor(char *schemat, hud_t *hud)
 {
-    char *schemat_bak = schemat;
     int type = 0;
 
     while (schemat != NULL && schemat[0] != '\0') {

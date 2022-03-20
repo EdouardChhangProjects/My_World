@@ -21,5 +21,13 @@ void select_level_tool(hud_button_t *button __attribute__((unused)),
 void *param);
 void select_uniform_tool(hud_button_t *button __attribute__((unused)),
 void *param);
+void select_set_tool_grass(hud_button_t *button __attribute__((unused)),
+void *param);
+void select_set_tool_swamp(hud_button_t *button __attribute__((unused)),
+void *param);
+void select_set_tool_ice(hud_button_t *button __attribute__((unused)),
+void *param);
+void select_set_tool_fire(hud_button_t *button __attribute__((unused)),
+void *param);
 
 #endif

@@ -45,6 +45,13 @@
         sfSprite *sprite;
     } framebuffer_t;
 
+    typedef enum wd_spritetype {
+        GRASS,
+        SWAMP,
+        ICE,
+        FIRE
+    } wd_spritetype_t;
+
     typedef struct wd_map_s {
         int **map;
         int **map_text;
@@ -56,6 +63,7 @@
         sfVertexArray **line;
         sfVector2i selected;
         wd_type_t type;
+        wd_spritetype_t spritetype;
     } wd_map_t;
 
     typedef struct wd_matrix4x4_s {
@@ -109,12 +117,6 @@
     #define SELECTED_TILE game->map->map[game->map->selected.x]\
                                                 [game->map->selected.y]
 
-    typedef enum wd_spritetype {
-        GRASS,
-        SWAMP,
-        ICE,
-        FIRE
-    } wd_spritetype_t;
 
     int my_world(char **av, int ac);
     int gameloop(wd_game_t *game);
@@ -174,5 +176,5 @@
     void change_zoom(wd_game_t *game, sfEvent event);
     void change_angle(wd_game_t *game, sfEvent event);
     void skin_tool(wd_game_t *game);
-    
+
 #endif

@@ -54,7 +54,7 @@ void skin_tool(wd_game_t *game)
         tile.x = update_x(i, game, game->map->width - 1, game->map->height - 1);
         tile.y = update_y(i, game, game->map->width - 1, game->map->height - 1);
         if (tile_contains(game, tile, mouse)) {
-            game->map->map_text[tile.x][tile.y] += 1;
+            game->map->map_text[tile.x][tile.y] = game->map->spritetype;
             game->map->map_text[tile.x][tile.y] %= 4;
             return;
         }

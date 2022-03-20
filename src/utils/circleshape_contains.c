@@ -25,4 +25,5 @@ int circleshape_draw(wd_game_t *game, sfCircleShape *circle, int x, int y)
     sfRenderWindow_drawCircleShape(game->win, circle, NULL);
     if (game->map->selected.x == x && game->map->selected.y == y)
         sfCircleShape_setFillColor(circle, sfWhite);
+    return 0;
 }

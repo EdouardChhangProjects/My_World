@@ -8,8 +8,6 @@
 #include "my_world.h"
 #include "actions.h"
 
-void test_button_press(hud_button_t *button, void *param);
-
 hud_t *init_hud(wd_game_t *game)
 {
     list_t *actions = NULL;
@@ -18,6 +16,14 @@ hud_t *init_hud(wd_game_t *game)
     actions = hud_action_append(actions, "level_tool", &select_level_tool,
     game);
     actions = hud_action_append(actions, "uniform_tool", &select_uniform_tool,
+    game);
+    actions = hud_action_append(actions, "set_tool_grass",
+    &select_set_tool_grass, game);
+    actions = hud_action_append(actions, "set_tool_swamp",
+    &select_set_tool_swamp, game);
+    actions = hud_action_append(actions, "set_tool_ice", &select_set_tool_ice,
+    game);
+    actions = hud_action_append(actions, "set_tool_fire", &select_set_tool_fire,
     game);
     actions = hud_action_append(actions, "toogle_pause", &toogle_pause, game);
     hud = hud_init(game->win, actions, "assets/hud/hud.txt");

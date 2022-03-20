@@ -28,6 +28,7 @@ SRC	=	src/hud/components/buttons/set/pos_size.c	\
 		src/init_elements/init_circle.c			\
 		src/init_elements/init_window.c			\
 		src/init_elements/init_matrix.c			\
+		src/my_world/actions/textures.c			\
 		src/hud/parser/core/extractor.c			\
 		src/handle_errors/print_help.c			\
 		src/hud/engine/create/button.c			\

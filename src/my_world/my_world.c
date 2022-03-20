@@ -17,7 +17,7 @@ void update_status(wd_game_t *game)
         if (game->map->type == LEVEL)
             level_tool(game);
         if (game->map->type == UNIFORM)
-            skin_tool(game);
+            union_tool(game);
         if (game->map->type == SKIN)
             skin_tool(game);
     }
@@ -37,7 +37,6 @@ void render_huds(wd_game_t *game)
 int gameloop(wd_game_t *game)
 {
     sfEvent event;
-    static int i = 0;
 
     update_status(game);
     sfRenderWindow_clear(game->win, sfBlack);
