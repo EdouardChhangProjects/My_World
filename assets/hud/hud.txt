@@ -1,9 +1,3 @@
-<button@pos={0:0:100:100};action=level_tool@/>
-<button@pos={100:0:100:100};action=uniform_tool@/>
-<button@pos={200:0:100:100};action=but3@/>
-<button@pos={300:0:100:100};action=but4@/>
-<button@pos={400:0:100:100};action=but5@/>
-<button@pos={500:0:100:100};action=but6@/>
-<button@pos={600:0:100:100};action=but7@/>
-<button@pos={700:0:100:100};action=but8@/>
-<button@pos={1180:0:100:100};color={0:0:0:0};actionColor={0:0:0:0};border=false;action=toogle_pause;texture=assets/buttons/pause.png@/>
+<button@pos={0:0:100:100};action=level_tool;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/level.png@/>
+<button@pos={100:0:100:100};action=uniform_tool;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/uniform.png@/>
+<button@pos={1780:0:100:100};color={0:0:0:0};actionColor={0:0:0:0};border=false;action=toogle_pause;texture=assets/buttons/pause.png@/>
