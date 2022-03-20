@@ -21,24 +21,6 @@ sfVector2f view_pos)
     .height = button->pos.height}, color, view_pos);
 }
 
-// taille texture = taille boutton / taille texture
-
-// static
-
-/* sfRenderStates *init_text_state(sfTexture *texture)
-{
-    sfRenderStates *states = my_memset(sizeof(sfRenderStates), NULL);
-
-    if (texture == NULL || states == NULL) {
-        return NULL;
-    }
-    states->shader = sfShader_createFromMemory(NULL, NULL, NULL);
-    states->blendMode = sfBlendAlpha;
-    states->transform = sfTransform_Identity;
-    states->texture = texture;
-    return states;
-} */
-
 void hud_button_render_texture(sfRenderWindow *win, hud_button_t *button,
 sfVector2f view_pos)
 {
@@ -48,8 +30,11 @@ sfVector2f view_pos)
     if (button->texture == NULL)
         return;
     rect = hud_create_rect((sfFloatRect){
-    .left = button->pos.left, .top = button->pos.top,
-    .width = button->pos.width, .height = button->pos.height}, sfWhite,
+    .left = button->pos.left,
+    .top = button->pos.top,
+    .width = button->pos.width,
+    .height = button->pos.height},
+    sfWhite,
     view_pos, button->texture);
     states->shader = sfShader_createFromMemory(NULL, NULL, NULL);
     states->blendMode = sfBlendAlpha;
@@ -92,3 +77,20 @@ sfVector2f view_pos)
     .height = button->pos.height}, color, view_pos);
     hud_button_render_texture(win, button, view_pos);
 }
+// taille texture = taille boutton / taille texture
+
+// static
+
+/* sfRenderStates *init_text_state(sfTexture *texture)
+{
+    sfRenderStates *states = my_memset(sizeof(sfRenderStates), NULL);
+
+    if (texture == NULL || states == NULL) {
+        return NULL;
+    }
+    states->shader = sfShader_createFromMemory(NULL, NULL, NULL);
+    states->blendMode = sfBlendAlpha;
+    states->transform = sfTransform_Identity;
+    states->texture = texture;
+    return states;
+} */

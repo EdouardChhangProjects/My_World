@@ -11,7 +11,8 @@ hud_button_t *hud_button_init(void)
 {
     hud_button_t *button = malloc(sizeof(hud_button_t));
 
-    button->pos = (sfIntRect){.left = 0, .top = 0, .width = 100, .height = 100};
+    button->pos = (sfIntRect){.left = 0, .top = 0, .width = 100,
+                              .height = 100};
     button->border = true;
     button->borderWidth = (sfFloatRect){.left = 5, .top = 5,
     .width = 5, .height = 5};

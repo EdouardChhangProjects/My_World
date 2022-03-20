@@ -9,6 +9,8 @@
 
 int free_states(sfRenderStates *states)
 {
+    if (states == NULL)
+        return 84;
     sfShader_destroy((sfShader *)states->shader);
     sfTexture_destroy((sfTexture *)states->texture);
     free(states);

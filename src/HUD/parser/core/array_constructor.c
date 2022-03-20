@@ -30,7 +30,7 @@ sfFloatRect hud_parser_float_rect(char *rect_constr)
 {
     sfFloatRect rect;
     char **arr = str_to_array(rect_constr, ":");
-    float nbrs[] = {0.0, 0.0, 0.0, 0.0};
+    float nbrs[] = {0, 0, 0, 0};
 
     if (arr == NULL)
         return (sfFloatRect){.left = -1, .top = -1, .width = -1, .height = -1};

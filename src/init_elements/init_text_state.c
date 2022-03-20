@@ -9,6 +9,10 @@
 
 sfRenderStates *init_text_state(wd_spritetype_e type)
 {
+    char *spritefile[] = {"assets/basic_green.png",
+            "assets/swamp_set.png",
+            "assets/ice_set.png",
+            "assets/fire_set.png"};
     sfRenderStates *states = my_memset(sizeof(sfRenderStates), NULL);
     sfTexture *texture = sfTexture_createFromFile(wd_spritefile[type],
                                                   NULL);

@@ -52,7 +52,7 @@ wd_game_t *init_game(char **av, int ac)
         return NULL;
     if ((game = init_map(av, ac, game)) == NULL)
         return NULL;
-    game->angle = (sfVector2i){.x = 250, .y = 150};
+    game->angle = (wd_vector2d_t){.x = 250, .y = 150};
     game->matrix.base_matrix = init_matrix(0);
     game->matrix.rotx_matrix = init_matrix(1);
     game->matrix.roty_matrix = init_matrix(1);
@@ -68,8 +68,6 @@ wd_game_t *init_game(char **av, int ac)
 
 int free_game(wd_game_t *game)
 {
-    framebuffer_destroy(game->fb);
-    sfRenderWindow_destroy(game->win);
     free_matrix(game->matrix.base_matrix);
     free_matrix(game->matrix.rotx_matrix);
     free_matrix(game->matrix.roty_matrix);

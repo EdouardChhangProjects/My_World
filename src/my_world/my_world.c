@@ -6,21 +6,28 @@
 */
 
 #include "my_world.h"
+#include "hud.h"
 
-void huds_render(wd_game_t *game)
+void update_status(wd_game_t *game)
 {
-    if (game->menus.main == true)
-        hud_render(game->menus.main_hud);
-    if (game->menus.pause == true)
-        hud_render(game->menus.pause_hud);
-    if (game->menus.save == true)
-        hud_render(game->menus.save_hud);
+    if (!sfMouse_isButtonPressed(sfMouseLeft)) {
+        game->map->selected = get_selected_circle(game, 50 - \
+        (game->map->fov / 10));
+    } else {
+        if (game->map->type == LEVEL)
+            level_tool(game);
+        if (game->map->type == UNIFORM)
+            union_tool(game);
+    }
+    update_dir(game);
 }
 
 int gameloop(wd_game_t *game)
 {
     sfEvent event;
+    static int i = 0;
 
+        update_status(game);
         sfRenderWindow_clear(game->win, sfBlack);
         while (sfRenderWindow_pollEvent(game->win, &event)) {
             analyse_win_events(game, event);
@@ -34,8 +41,12 @@ int gameloop(wd_game_t *game)
             render_map(game);
             hud_render(game->hud);
         }
-        huds_render(game);
-        sfRenderWindow_display(game->win);
+    }
+    if (game->status) {
+        render_map(game);
+        hud_render(game->hud);
+    }
+    sfRenderWindow_display(game->win);
     return 0;
 }
 
@@ -49,9 +60,8 @@ int my_world(char **av, int ac)
     if ((game = init_huds(game)) == NULL)
         return 84;
     game->status = 0;
-    while (sfRenderWindow_isOpen(game->win)) {
+    while (sfRenderWindow_isOpen(game->win))
         gameloop(game);
-    }
     free_game(game);
     return 0;
 }

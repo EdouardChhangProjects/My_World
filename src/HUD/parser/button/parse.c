@@ -8,7 +8,7 @@
 #include "hud.h"
 
 static void hud_parser_button_get_value_3(hud_button_t *button,
-char **keys)
+                                          char **keys)
 {
     char *key = NULL;
 
@@ -31,7 +31,7 @@ char **keys)
 }
 
 static void hud_parser_button_get_value_2(hud_button_t *button,
-char **keys)
+                                          char **keys)
 {
     char *key = NULL;
 
