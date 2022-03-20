@@ -17,5 +17,7 @@ void launch_game(hud_button_t *button __attribute__((unused)), void *param);
 void launch_menu(hud_button_t *button __attribute__((unused)), void *param);
 void exit_game(hud_button_t *button __attribute__((unused)), void *param);
 void toogle_pause(hud_button_t *button __attribute__((unused)), void *param);
+void select_level_tool(hud_button_t *button __attribute__((unused)),
+void *param);
 
 #endif

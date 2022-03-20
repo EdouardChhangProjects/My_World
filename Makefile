@@ -5,7 +5,7 @@
 ## Makefile to build libmy.a
 ##
 
-override CFLAGS += -fno-builtin -W -Wall -Wextra -Llib \
+override CFLAGS += -fno-builtin -Llib \
 -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
 override CPPFLAGS += -Iinclude -lmy -llist -lprintf -lprinterr -lm
 
@@ -42,6 +42,7 @@ SRC	=	src/hud/components/buttons/set/pos_size.c	\
 		src/hud/engine/init/actions.c			\
 		src/hud/engine/init/texture.c			\
 		src/hud/parser/button/parse.c			\
+		src/my_world/actions/tools.c			\
 		src/matrix/calc_end_matrix.c			\
 		src/matrix/multiply_matrix.c			\
 		src/hud/engine/events/clic.c			\

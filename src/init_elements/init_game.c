@@ -56,7 +56,7 @@ wd_game_t *init_game(char **av, int ac)
     game->fb = framebuffer_create(WIDTH, HEIGHT);
     if ((game->win = render_window()) == NULL)
         return NULL;
-    if ((game->map = init_map(av, ac, game)) == NULL)
+    if ((game = init_map(av, ac, game)) == NULL)
         return NULL;
     game->angle = (wd_vector2d_t){.x = 250, .y = 150};
     game->matrix.base_matrix = init_matrix(0);

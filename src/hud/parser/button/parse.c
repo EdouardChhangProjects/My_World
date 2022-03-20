@@ -83,7 +83,7 @@ void hud_parser_button_get_action(hud_t *hud, hud_button_t *button, char **keys)
     }
 }
 
-char *hud_parser_button_parser(char *schemat, hud_t *hud)
+const char *hud_parser_button_parser(char *schemat, hud_t *hud)
 {
     hud_button_t *button = hud_button_init();
     char **keys = NULL;

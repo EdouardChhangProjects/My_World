@@ -1,4 +1,4 @@
-<button@pos={0:0:100:100};action=but1@/>
+<button@pos={0:0:100:100};action=level_tool@/>
 <button@pos={100:0:100:100};action=but2@/>
 <button@pos={200:0:100:100};action=but3@/>
 <button@pos={300:0:100:100};action=but4@/>

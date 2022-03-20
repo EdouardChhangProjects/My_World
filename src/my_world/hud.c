@@ -15,14 +15,8 @@ hud_t *init_hud(wd_game_t *game)
     list_t *actions = NULL;
     hud_t *hud = NULL;
 
-    actions = hud_action_append(actions, "but1", &test_button_press, "but1");
-    actions = hud_action_append(actions, "but2", &test_button_press, "but2");
-    actions = hud_action_append(actions, "but3", &test_button_press, "but3");
-    actions = hud_action_append(actions, "but4", &test_button_press, "but4");
-    actions = hud_action_append(actions, "but5", &test_button_press, "but5");
-    actions = hud_action_append(actions, "but6", &test_button_press, "but6");
-    actions = hud_action_append(actions, "but7", &test_button_press, "but7");
-    actions = hud_action_append(actions, "but8", &test_button_press, "but8");
+    actions = hud_action_append(actions, "level_tool", &select_level_tool,
+    game);
     actions = hud_action_append(actions, "toogle_pause", &toogle_pause, game);
     hud = hud_init(game->win, actions, "assets/hud/hud.txt");
     return hud;

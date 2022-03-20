@@ -100,7 +100,7 @@ bool hud_parser_bool(char *bool_constr);
 sfIntRect hud_parser_int_rect(char *rect_constr);
 sfFloatRect hud_parser_float_rect(char *rect_constr);
 sfColor hud_parser_sfcolor(char *color_constr);
-char *hud_parser_button_parser(char *schemat, hud_t *hud);
+const char *hud_parser_button_parser(char *schemat, hud_t *hud);
 char *hud_parser_skip_balise(char *schemat);
 sfVertexArray *hud_create_rect(sfFloatRect pos, sfColor color,
 sfVector2f view_pos, sfTexture *texture);

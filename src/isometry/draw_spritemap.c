@@ -81,8 +81,8 @@ int draw_spritemap(wd_game_t *game)
         return 84;
     sfVertexArray_setPrimitiveType(vertexarr, sfQuads);
     for (int i = 0; i < (game->map->width - 1) * (game->map->height -1); i++) {
-        x = update_x(i, game, MAP_X - 1, MAP_Y - 1);
-        y = update_y(i, game, MAP_X - 1, MAP_Y - 1);
+        x = update_x(i, game, game->map->width - 1, game->map->height - 1);
+        y = update_y(i, game, game->map->width - 1, game->map->height - 1);
         draw_spritetile(game, x, y, vertexarr);
     }
     sfVertexArray_destroy(vertexarr);
