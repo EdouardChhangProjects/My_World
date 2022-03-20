@@ -10,13 +10,13 @@ int my_strlen(char const *str);
 static void my_compute_cap(char *str, int *pos, int *first_let, int *is_letter)
 {
     char alphabet[] = "abcdefghijklmnopqrstuvwxyz1234567890";
-    char ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    char alphabet_up[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     int i = pos[0];
     int j = pos[1];
 
-    if ((str[i] == alphabet[j]) || (str[i] == ALPHABET[j])) {
+    if ((str[i] == alphabet[j]) || (str[i] == alphabet_up[j])) {
         if (*first_let) {
-            str[i] = ALPHABET[j];
+            str[i] = alphabet_up[j];
         } else {
             str[i] = alphabet[j];
         }
