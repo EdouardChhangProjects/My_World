@@ -12,10 +12,10 @@
 int print_help(void)
 {
     int fd = open(HELP, O_RDONLY);
-    char buffer[394];
+    char buffer[234];
 
-    if (read(fd, buffer, 393) != -1)
-        write(1, buffer, 393);
+    if (read(fd, buffer, 233) != -1)
+        write(1, buffer, 233);
     else
         return my_printerr("./my_runner: Failed to load help file\n");
     close(fd);

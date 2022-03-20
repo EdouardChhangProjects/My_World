@@ -17,7 +17,7 @@ void update_status(wd_game_t *game)
         if (game->map->type == LEVEL)
             level_tool(game);
         if (game->map->type == UNIFORM)
-            union_tool(game);
+            skin_tool(game);
         if (game->map->type == SKIN)
             skin_tool(game);
     }

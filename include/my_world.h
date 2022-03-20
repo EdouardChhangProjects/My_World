@@ -173,5 +173,6 @@
     int tile_contains(wd_game_t *game, sfVector2i point, sfVector2f dot);
     void change_zoom(wd_game_t *game, sfEvent event);
     void change_angle(wd_game_t *game, sfEvent event);
+    void skin_tool(wd_game_t *game);
     
 #endif

@@ -15,6 +15,8 @@ void on_input(wd_game_t *game, sfEvent event)
         change_angle(game, event);
     if (event.key.code == sfKeyA || event.key.code == sfKeyE)
         change_zoom(game, event);
+    if (event.key.code == sfKeyEscape)
+        sfRenderWindow_close(game->win);
 }
 
 void analyse_events(wd_game_t *game, sfEvent event)

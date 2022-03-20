@@ -1,2 +1,9 @@
-This is all the help you'll get
+USAGE
+	./my_world [map]
 
+    3D world editor game in CSFML!
+	
+DESCRIPTION
+	map : filepath to a my_world map. format described in the .legend file
+
+Game made by Edouard CHHANG and Maxime SENARD in 2021 as a first year EPITECH project

@@ -46,15 +46,16 @@ void union_tool(wd_game_t *game)
 
 void skin_tool(wd_game_t *game)
 {
-    int x = 0;
-    int y = 0;
-    sfVector2i mouse = sfMouse_getPositionRenderWindow(game->win);
-
+    sfVector2i tile;
+    sfVector2i tmp = sfMouse_getPositionRenderWindow(game->win);
+    sfVector2f mouse = {.x = (float)tmp.x, .y = (float)tmp.y};
+    
     for (int i = 0; i < (game->map->width - 1) * (game->map->height - 1); ++i) {
-        x = update_x(i, game, game->map->width - 1, game->map->height - 1);
-        y = update_y(i, game, game->map->width - 1, game->map->height - 1);
-        if (tile_contains(game, mouse, game->map->points[x][y])) {
-            game->map->map_text[x][y] = 1;
+        tile.x = update_x(i, game, game->map->width - 1, game->map->height - 1);
+        tile.y = update_y(i, game, game->map->width - 1, game->map->height - 1);
+        if (tile_contains(game, tile, mouse)) {
+            game->map->map_text[tile.x][tile.y] += 1;
+            game->map->map_text[tile.x][tile.y] %= 4;
             return;
         }
     }

@@ -34,7 +34,7 @@ int tile_contains(wd_game_t *game, sfVector2i point, sfVector2f dot)
     int tri_one = 0;
     int tri_two = 0;
 
-    if (point.x >= game->map->height -1 || point.y >= game->map->width - 1)
+    if (point.x >= game->map->height - 1 || point.y >= game->map->width - 1)
         return 0;
     tri_one = tri_contains(game->map->points[point.x][point.y],
     game->map->points[point.x + 1][point.y],
