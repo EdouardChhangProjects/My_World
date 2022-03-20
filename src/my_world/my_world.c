@@ -30,7 +30,7 @@ int gameloop(wd_game_t *game)
                 analyse_events(game, event);
             }
         }
-        if (game->status) {
+        if (game->status == 1) {
             render_map(game);
             hud_render(game->hud);
         }
@@ -39,10 +39,9 @@ int gameloop(wd_game_t *game)
     return 0;
 }
 
-int my_world(void)
+int my_world(char **av, int ac)
 {
-    wd_game_t *game = init_game();
-    hud_t *menu = NULL;
+    wd_game_t *game = init_game(av, ac);
     sfEvent event;
 
     if (game == NULL)

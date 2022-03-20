@@ -15,8 +15,8 @@ double to_radiant(double angle)
 sfVector2f pos_3d_to_2d(int x, int y, int z, wd_game_t *game)
 {
     sfVector2f vector = {0};
-    sfVector3f origin = {.x = (float)x - (MAP_X / 2.0),
-                         .y = (float)y - (MAP_Y / 2.0),
+    sfVector3f origin = {.x = (float)x - (game->map->width / 2.0),
+                         .y = (float)y - (game->map->height / 2.0),
                          .z =(float)z};
 
     origin = apply_matrix(origin, game->matrix.end_matrix);

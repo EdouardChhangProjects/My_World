@@ -34,6 +34,8 @@
 
     typedef struct wd_map_s {
         int **map;
+        int **map_text;
+        char *path;
         int height;
         int width;
         float fov;
@@ -88,8 +90,6 @@
     #define HEIGHT 1080
     #define SCREEN_RATIO WIDTH / HEIGHT
     #define FPS 80
-    #define MAP_X 6
-    #define MAP_Y 6
     #define FNEAR 40.0
     #define FFAR 50.0
     #define FOV 45.0
@@ -101,7 +101,7 @@
         ICE,
         FIRE
     } wd_spritetype_e;
-
+/* 
     static char *wd_spritefile[] = {
             "assets/BasicGreen.png",
             "assets/Swampset.png",
@@ -128,8 +128,9 @@
             (sfVector2f) {.x = 16, .y = 0},
             (sfVector2f) {.x = 16, .y = 16},
             (sfVector2f) {.x = 0, .y = 16}
-    };
+    }; */
 
+int my_world(char **av, int ac);
 int gameloop(wd_game_t *game);
 float **init_proj_matrix();
 wd_game_t *init_huds(wd_game_t *game);
@@ -145,7 +146,7 @@ void *my_memset(int size, char *str);
 framebuffer_t *clean_framebuffer(framebuffer_t *fb);
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
 void my_put_pixel(framebuffer_t *framebuffer, int x, int y, sfColor color);
-wd_game_t *init_game(void);
+wd_game_t *init_game(char **av, int ac);
 int render_map(wd_game_t*game);
 sfVertexArray *create_line(sfVector2f *point1, sfVector2f* point2);
 sfRenderStates *init_text_state(wd_spritetype_e type);
@@ -163,8 +164,6 @@ void rotate_matrix_x(wd_game_t *game, double angle_x);
 void rotate_matrix_y(wd_game_t *game, double angle_y);
 float **init_proj_matrix(void);
 int calc_end_matrix(wd_game_t *game);
-hud_t *init_hud(sfRenderWindow * win);
-hud_t *init_menu(sfRenderWindow * win, wd_game_t *game);
 int free_states(sfRenderStates *states);
 int normalize_angle(wd_game_t *game);
 int free_matrix(float **matrix);
@@ -172,5 +171,6 @@ int free_game(wd_game_t *game);
 void on_click(wd_game_t *game, sfEvent event);
 int update_dir(wd_game_t *game);
 void update_proj_matrix(wd_game_t *game);
+wd_game_t *parse_map(wd_game_t *game, char *filepath);
 
 #endif

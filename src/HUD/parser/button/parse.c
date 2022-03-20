@@ -47,6 +47,10 @@ char **keys)
         button->toggle = hud_parser_bool(key);
         free(key);
     }
+    if ((key = hud_parser_get_key(keys, "hidden=")) != NULL) {
+        button->hidden = hud_parser_bool(key);
+        free(key);
+    }
     hud_parser_button_get_value_3(button, keys);
 }
 

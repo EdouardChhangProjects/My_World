@@ -25,7 +25,7 @@ hud_t *hud_init(sfRenderWindow *win, list_t *actions, char *schemat_path)
     hud_t *hud = NULL;
     char *schemat = file_to_str(schemat_path);
 
-    my_printf("===\t===\t=== %s ===\t===\t===\t===\n", schemat_path);
+    my_printf("===\t===\t=== %s\t===\t===\t===\t===\n", schemat_path);
     if (schemat == NULL) {
         my_printerr("\t\t>>> fail to load file %s\n", schemat_path);
         return NULL;

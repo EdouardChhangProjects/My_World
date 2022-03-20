@@ -7,26 +7,51 @@
 
 #include "my_world.h"
 
-wd_map_t *init_map()
+wd_game_t *init_default_map(wd_game_t *game)
 {
-    wd_map_t *dest = my_memset(sizeof(wd_map_t), NULL);
-
-    dest->map = (int **)map;
-    dest->width = MAP_X;
-    dest->height = MAP_Y;
-    dest->fov = (dest->width *dest->height);
-    return dest;
+    game->map->map = malloc(sizeof(int*) * (6 + 1));
+    for (int i = 0; i < 6; i++) {
+        game->map->map[i] = malloc(sizeof(int) * (6 + 1));
+        for (int j = 0; j < 6; j++) {
+            game->map->map[i][j] = 0;
+        }
+    }
+    game->map->map_text = malloc(sizeof(int*) * (5 + 1));
+    for (int i = 0; i < 5; i++) {
+        game->map->map_text[i] = malloc(sizeof(int) * (5 + 1));
+        for (int j = 0; j < 5; j++) {
+            game->map->map_text[i][j] = 3;
+        }
+    }
+    game->map->width = 6;
+    game->map->height = 6;
+    return game;
 }
 
-wd_game_t *init_game(void)
+wd_map_t *init_map(char **av, int ac, wd_game_t *game)
+{
+    game->map = my_memset(sizeof(wd_map_t), NULL);
+
+    if (ac == 2) {
+        if ((game = parse_map(game, av[1])) == NULL)
+            return NULL;
+    } else
+        game = init_default_map(game);
+    game->map->fov = (game->map->width * game->map->height);
+    return game;
+}
+
+wd_game_t *init_game(char **av, int ac)
 {
     wd_game_t *game = my_memset(sizeof(wd_game_t), NULL);
 
     if (game == NULL)
         return NULL;
     game->fb = framebuffer_create(WIDTH, HEIGHT);
-    game->win = render_window();
-    game->map = init_map();
+    if ((game->win = render_window()) == NULL)
+        return NULL;
+    if ((game = init_map(av, ac, game)) == NULL)
+        return NULL;
     game->angle = (sfVector2i){.x = 250, .y = 150};
     game->matrix.base_matrix = init_matrix(0);
     game->matrix.rotx_matrix = init_matrix(1);

@@ -21,9 +21,9 @@ sfVector2f print_point(int x, int y, int z, wd_game_t *game)
 int render_map(wd_game_t*game)
 {
     clean_framebuffer(game->fb);
-    for (int y = 0; y < 6; ++y) {
-        for (int x = 0; x < 6; ++x)
-            print_point(x, y, map[x][y], game);
+    for (int y = 0; y < game->map->height; ++y) {
+        for (int x = 0; x < game->map->width; ++x)
+            print_point(x, y, game->map->map[x][y], game);
     }
     sfTexture_updateFromPixels(game->fb->texture, game->fb->pixels, WIDTH,
                                HEIGHT, 0, 0);

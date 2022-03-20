@@ -27,7 +27,8 @@ sfVector2i mouse_pos, sfVector2i offset)
 
     for (list_t *buttons = hud->buttons; buttons != NULL;
         buttons = buttons->next) {
-        if (sfIntRect_contains(&((hud_button_t *)buttons->data)->pos,
+        if (((hud_button_t *)buttons->data)->hidden == false &&
+            sfIntRect_contains(&((hud_button_t *)buttons->data)->pos,
             mouse_pos.x + offset.x, mouse_pos.y + offset.y) == sfTrue &&
             used == false) {
             ((hud_button_t *)buttons->data)->hover = true;

@@ -51,8 +51,8 @@ int draw_lines(wd_game_t *game)
 {
     sfVector2f ***points = get_points(game);
 
-    for (int y = 0; y < 6; y++) {
-        for (int x = 0; x < 6; x++) {
+    for (int y = 0; y < game->map->height; y++) {
+        for (int x = 0; x < game->map->width; x++) {
             draw_line(game, points, x, y);
         }
     }

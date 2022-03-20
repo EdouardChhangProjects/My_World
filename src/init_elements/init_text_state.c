@@ -10,7 +10,7 @@
 sfRenderStates *init_text_state(wd_spritetype_e type)
 {
     sfRenderStates *states = my_memset(sizeof(sfRenderStates), NULL);
-    sfTexture *texture = sfTexture_createFromFile(wd_spritefile[type - 1],
+    sfTexture *texture = sfTexture_createFromFile(wd_spritefile[type],
                                                   NULL);
 
     if (texture == NULL || states == NULL) {

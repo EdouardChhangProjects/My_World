@@ -14,7 +14,7 @@ char *wd_spritefile[] = {
         "assets/FireSet.png"
 };
 
-int **map = (int *[]){
+/* int **map = (int *[]){
         (int []){01, 01, 01, 01, 01, 01},
         (int []){01, 01, 01, 01, 01, 01},
         (int []){01, 01, 01, 01, 02, 01},
@@ -30,7 +30,7 @@ int **map_text = (int *[]){
         (int []){02, 01, 01, 03, 03},
         (int []){01, 01, 04, 03, 03},
 };
-
+ */
 sfVector2f wd_texCoords[] = {
         (sfVector2f) {.x = 0, .y = 0},
         (sfVector2f) {.x = 16, .y = 0},
