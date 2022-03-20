@@ -7,13 +7,6 @@
 
 #include "my_world.h"
 
-void test_button_press(hud_button_t *button, void *param)
-{
-    char *text = (char*)param;
-
-    my_printf("text = %s\n", text);
-}
-
 void launch_game(hud_button_t *button __attribute__((unused)), void *param)
 {
     wd_game_t *game = (wd_game_t*)param;

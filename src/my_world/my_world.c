@@ -37,8 +37,7 @@ void render_huds(wd_game_t *game)
 int gameloop(wd_game_t *game)
 {
     sfEvent event;
-    static int i = 0;
-    
+
     update_status(game);
     sfRenderWindow_clear(game->win, sfBlack);
     while (sfRenderWindow_pollEvent(game->win, &event)) {
@@ -60,7 +59,6 @@ int gameloop(wd_game_t *game)
 int my_world(char **av, int ac)
 {
     wd_game_t *game = init_game(av, ac);
-    sfEvent event;
 
     if (game == NULL)
         return 84;

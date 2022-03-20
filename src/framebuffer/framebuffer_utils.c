@@ -20,6 +20,7 @@ framebuffer_t *clean_framebuffer(framebuffer_t *fb)
             fb->pixels[index + 3] = sfBlack.a;
         }
     }
+    return fb;
 }
 
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height)

@@ -19,6 +19,7 @@ static wd_dir_t invert_dir(wd_dir_t dir)
         case SO:
             return NE;
     }
+    return NO;
 }
 
 int update_dir(wd_game_t *game)

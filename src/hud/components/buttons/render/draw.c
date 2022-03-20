@@ -12,7 +12,7 @@ sfVector2f view_pos)
 {
     sfColor color;
 
-    if (button->toggle == true ^ button->hover == true) {
+    if ((button->toggle == true) ^ (button->hover == true)) {
         color = button->actionBorderColor;
     } else
         color = button->borderColor;

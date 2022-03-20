@@ -1,3 +1,8 @@
-<button@pos={0:0:100:100};action=level_tool;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/level.png@/>
+<button@pos={200:0:100:100};action=level_tool;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/level.png@/>
 <button@pos={100:0:100:100};action=uniform_tool;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/uniform.png@/>
+<button@pos={0:0:100:100};action=set_tool_grass;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/uniform.png@/>
+<button@pos={0:100:100:100};action=set_tool_swamp;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/uniform.png@/>
+<button@pos={0:200:100:100};action=set_tool_ice;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/uniform.png@/>
+<button@pos={0:300:100:100};action=set_tool_fire;color={0:0:0:0};actionColor={0:0:0:0};border=false;texture=assets/buttons/uniform.png@/>
 <button@pos={1780:0:100:100};color={0:0:0:0};actionColor={0:0:0:0};border=false;action=toogle_pause;texture=assets/buttons/pause.png@/>
+
