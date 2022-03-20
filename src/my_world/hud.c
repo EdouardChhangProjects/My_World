@@ -17,6 +17,8 @@ hud_t *init_hud(wd_game_t *game)
 
     actions = hud_action_append(actions, "level_tool", &select_level_tool,
     game);
+    actions = hud_action_append(actions, "uniform_tool", &select_uniform_tool,
+    game);
     actions = hud_action_append(actions, "toogle_pause", &toogle_pause, game);
     hud = hud_init(game->win, actions, "assets/hud/hud.txt");
     return hud;

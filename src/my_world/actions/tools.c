@@ -14,3 +14,11 @@ void *param)
 
     game->map->type = LEVEL;
 }
+
+void select_uniform_tool(hud_button_t *button __attribute__((unused)),
+void *param)
+{
+    wd_game_t *game = (wd_game_t *)param;
+
+    game->map->type = UNIFORM;
+}
