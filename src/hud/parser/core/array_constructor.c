@@ -26,7 +26,7 @@ sfIntRect hud_parser_int_rect(char *rect_constr)
     return rect;
 }
 
-sfFloatRect hud_parsr_float_rect(char *rect_constr)
+sfFloatRect hud_parser_float_rect(char *rect_constr)
 {
     sfFloatRect rect;
     char **arr = str_to_array(rect_constr, ":");
