@@ -13,10 +13,10 @@ char *my_strupcase(char *str)
 {
     int length = my_strlen(str);
     char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
-    char ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char alphabet_up[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     for (int i = 0; i < length; i++) {
-        str[i] = replace_char(alphabet, ALPHABET, str[i]);
+        str[i] = replace_char(alphabet, alphabet_up, str[i]);
     }
     return str;
 }
