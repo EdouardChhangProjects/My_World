@@ -8,7 +8,6 @@
 #include "my_world.h"
 #include "actions.h"
 
-
 void change_zoom(wd_game_t *game, sfEvent event)
 {
     switch (event.key.code) {

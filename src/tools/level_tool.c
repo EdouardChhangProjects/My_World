@@ -13,10 +13,10 @@ void level_tool(wd_game_t *game)
 
     if (game->map->selected.x != -1) {
         if (pos_3d_to_2d(game->map->selected.x, game->map->selected.y,
-                         SELECTED_TILE + 1, game).y > (float)mouse.y)
+            SELECTED_TILE + 1, game).y > (float)mouse.y)
             SELECTED_TILE += 1;
         if (pos_3d_to_2d(game->map->selected.x, game->map->selected.y,
-                         SELECTED_TILE - 1, game).y < (float)mouse.y)
+            SELECTED_TILE - 1, game).y < (float)mouse.y)
             SELECTED_TILE -= 1;
     }
 }

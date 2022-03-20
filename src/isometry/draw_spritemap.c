@@ -5,11 +5,10 @@
 ** draw_spritemap
 */
 
-
 #include "my_world.h"
 
 int draw_spritetile(wd_game_t *game, unsigned int x, unsigned int y,
-                    sfVertexArray *vertex_array)
+sfVertexArray *vertex_array)
 {
     sfRenderStates *states = NULL;
     sfVertex vertex = {0};

@@ -15,7 +15,7 @@ sfRenderStates *init_text_state(wd_spritetype_e type)
             "assets/fire_set.png"};
     sfRenderStates *states = my_memset(sizeof(sfRenderStates), NULL);
     sfTexture *texture = sfTexture_createFromFile(spritefile[type],
-                                                  NULL);
+    NULL);
 
     if (texture == NULL || states == NULL) {
         return NULL;

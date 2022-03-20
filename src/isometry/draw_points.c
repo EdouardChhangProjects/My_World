@@ -9,9 +9,9 @@
 
 int draw_points(wd_game_t *game)
 {
-   sfCircleShape *circle = init_circle(50 - (game->map->fov / 10));
-   int x = 0;
-   int y = 0;
+    sfCircleShape *circle = init_circle(50 - (game->map->fov / 10));
+    int x = 0;
+    int y = 0;
 
     for (int i = 0; i < MAP_X * MAP_Y; ++i) {
         x = i % MAP_X;

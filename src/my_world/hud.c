@@ -35,7 +35,6 @@ hud_t *init_main_hud(wd_game_t *game)
 
     actions = hud_action_append(actions, "launch_game", &launch_game, game);
     actions = hud_action_append(actions, "exit_game", &exit_game, game);
-    //actions = hud_action_append(actions, "launch_game", &launch_game, game);
     hud = hud_init(game->win, actions, "assets/hud/main.txt");
     return hud;
 }
@@ -47,7 +46,6 @@ hud_t *init_pause_hud(wd_game_t *game)
 
     actions = hud_action_append(actions, "toogle_pause", &toogle_pause, game);
     actions = hud_action_append(actions, "launch_menu", &launch_menu, game);
-    //actions = hud_action_append(actions, "launch_game", &launch_game, game);
     hud = hud_init(game->win, actions, "assets/hud/pause.txt");
     return hud;
 }

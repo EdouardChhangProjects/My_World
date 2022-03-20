@@ -21,7 +21,7 @@ int hud_event_button_click(hud_button_t *button, sfEvent *event)
 }
 
 int hud_event_analyze_mouse_input(hud_t *hud, sfEvent *event,
-                                  sfVector2i mouse_pos, sfVector2i offset)
+sfVector2i mouse_pos, sfVector2i offset)
 {
     int used = 0;
 
@@ -33,7 +33,7 @@ int hud_event_analyze_mouse_input(hud_t *hud, sfEvent *event,
             used == false) {
             ((hud_button_t *)buttons->data)->hover = true;
             used = hud_event_button_click(((hud_button_t *)buttons->data),
-                                          event);
+            event);
         } else
             ((hud_button_t *)buttons->data)->hover = false;
     }
@@ -45,5 +45,5 @@ int hud_event_mouse(hud_t *hud, sfEvent *event)
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(hud->win);
 
     return hud_event_analyze_mouse_input(hud, event, mouse_pos,
-                                         (sfVector2i){.x = 0, .y = 0});
+    (sfVector2i){.x = 0, .y = 0});
 }

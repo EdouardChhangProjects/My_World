@@ -56,7 +56,6 @@ int hud_parser_extractor(char *schemat, hud_t *hud)
         schemat = &schemat[my_strlen(balises[type])];
         schemat = balises_func[type](schemat, hud);
     }
-    my_printf("================================HUD PARSING SUCCESFULL==========\
-======================\n\n\n");
+    my_printf("=================HUD PARSING SUCCESFULL=================\n\n\n");
     return 0;
 }
