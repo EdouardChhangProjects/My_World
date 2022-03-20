@@ -1,0 +1,22 @@
+Map is composed of two maps: one for the point and one for the texture
+
+first map is a 2D array with the 2-digit value representing the Z axis.
+Each tile is separated by a space and each line by a newline.
+
+Ex:
+
+01 01 01
+02 02 02
+03 03 03
+
+Then there is the other array, it represents the texture used.
+It needs to smaller by one on both the height and width.
+They are separated by a @.
+
+So a map would look like:
+
+Ex:
+01 01 01
+02 02 02
+03 03 03@01 02
+03 04
