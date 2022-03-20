@@ -6,7 +6,6 @@ build
 vgcore*
 .idea
 Makefile.save
-my_world
 
 # Prerequisites
 *.d
