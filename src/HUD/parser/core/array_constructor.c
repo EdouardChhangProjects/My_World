@@ -17,7 +17,7 @@ sfIntRect hud_parser_int_rect(char *rect_constr)
         return (sfIntRect){.left = -1, .top = -1, .width = -1, .height = -1};
     for (int i = 0; i < 4; i++) {
         if (arr[i] == NULL)
-            return (sfIntRect){.left = -1, .top = -1,
+            return (sfIntRect) {.left = -1, .top = -1,
             .width = -1, .height = -1};
         nbrs[i] = my_getnbr(arr[i]);
     }
@@ -58,6 +58,6 @@ sfColor hud_parser_sfcolor(char *color_constr)
             return (sfColor){.r = -1, .g = -1, .b = -1, .a = -1};
         nbrs[i] = my_getnbr(arr[i]);
     }
-    rect = (sfColor){.r = nbrs[0], .g = nbrs[1], .b = nbrs[2], .a = nbrs[3]};
+    rect = (sfColor){ .r = nbrs[0], .g = nbrs[1], .b = nbrs[2], .a = nbrs[3] };
     return rect;
 }
