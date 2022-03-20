@@ -18,6 +18,7 @@ int tri_area(sfVector2f v1, sfVector2f v2, sfVector2f v3)
     area /= 2;
     return abs((int)area);
 }
+
 int tri_contains(sfVector2f v1, sfVector2f v2, sfVector2f v3, sfVector2f dot)
 {
     int full_tri = tri_area(v1, v2, v3);

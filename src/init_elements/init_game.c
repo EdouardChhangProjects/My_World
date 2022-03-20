@@ -9,14 +9,14 @@
 
 wd_game_t *init_default_map(wd_game_t *game)
 {
-    game->map->map = malloc(sizeof(int*) * (6 + 1));
+    game->map->map = malloc(sizeof(int *) * (6 + 1));
     for (int i = 0; i < 6; i++) {
         game->map->map[i] = malloc(sizeof(int) * (6 + 1));
         for (int j = 0; j < 6; j++) {
             game->map->map[i][j] = 0;
         }
     }
-    game->map->map_text = malloc(sizeof(int*) * (5 + 1));
+    game->map->map_text = malloc(sizeof(int *) * (5 + 1));
     for (int i = 0; i < 5; i++) {
         game->map->map_text[i] = malloc(sizeof(int) * (5 + 1));
         for (int j = 0; j < 5; j++) {
@@ -56,7 +56,7 @@ wd_game_t *init_game(char **av, int ac)
     game->fb = framebuffer_create(WIDTH, HEIGHT);
     if ((game->win = render_window()) == NULL)
         return NULL;
-    if ((game = init_map(av, ac, game)) == NULL)
+    if ((game->map = init_map(av, ac, game)) == NULL)
         return NULL;
     game->angle = (wd_vector2d_t){.x = 250, .y = 150};
     game->matrix.base_matrix = init_matrix(0);

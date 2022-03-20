@@ -31,7 +31,7 @@ int draw_map(wd_game_t *game)
     return 0;
 }
 
-int render_map(wd_game_t*game)
+int render_map(wd_game_t *game)
 {
     for (int y = 0; y < game->map->width; ++y)
         for (int x = 0; x < game->map->height; ++x)
