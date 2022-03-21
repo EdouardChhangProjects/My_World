@@ -26,6 +26,7 @@ hud_t *init_hud(wd_game_t *game)
     actions = hud_action_append(actions, "set_tool_fire", &select_set_tool_fire,
     game);
     actions = hud_action_append(actions, "toogle_pause", &toogle_pause, game);
+    actions = hud_action_append(actions, "play_sound", &play_sound, NULL);
     hud = hud_init(game->win, actions, "assets/hud/hud.txt");
     return hud;
 }

@@ -29,5 +29,7 @@ void select_set_tool_ice(hud_button_t *button __attribute__((unused)),
 void *param);
 void select_set_tool_fire(hud_button_t *button __attribute__((unused)),
 void *param);
+void play_sound(hud_button_t *button __attribute__((unused)),
+void *param __attribute__((unused)));
 
 #endif

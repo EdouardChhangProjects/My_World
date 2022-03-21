@@ -49,3 +49,14 @@ void toogle_pause(hud_button_t *button __attribute__((unused)), void *param)
     game->menus.pause = true;
     game->status = 0;
 }
+
+void play_sound(hud_button_t *button __attribute__((unused)),
+void *param __attribute__((unused)))
+{
+    sfMusic *music;
+
+    music = sfMusic_createFromFile("assets/miaou.ogg");
+    if (music == NULL)
+        return NULL;
+    sfMusic_play(music);
+}

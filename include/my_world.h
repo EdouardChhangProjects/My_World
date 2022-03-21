@@ -8,6 +8,7 @@
 #include <SFML/Graphics.h>
 #include <SFML/System/Clock.h>
 #include <SFML/Window/Mouse.h>
+#include <SFML/Audio.h>
 #include <time.h>
 #include "list.h"
 #include "my.h"
