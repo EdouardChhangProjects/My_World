@@ -3,13 +3,17 @@ Editeur de monde en CSFML en 3D
 
 USAGE
 
+
   ./my_world [map]
 
+
 DESCRIPTION
+
 
   [map] fichier contenant une carte à charger. Encodage de la carte décrit dans le fichier .legend
 
 CONTROLES
+
   ZQSD Rotation de la caméra
   
   
