@@ -12,9 +12,14 @@ DESCRIPTION
 
 CONTROLES
 
-    ZQSD Rotation de la caméra
-  
-  
+    [ZQSD] Rotation de la caméra
+    [Souris] Interactions avec la carte. Cliquez sur les boutons pourr changer d'outils !
+    
+    Outils disponibles:
+        - Cliquez sur un point afin de mofifier sa hauteur
+        - Cliquez sur un point et maintenez, puis déplacez vous pour applatir la hauteur des points adjacents
+        - Changer la texture de la tuile
+
 Projet EPITECH réalisé par Edouard CHHANG et Maxime SENARD
 
 Répartition des tâches :
