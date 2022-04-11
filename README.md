@@ -1,6 +1,10 @@
 # My_World
 Editeur de monde en CSFML en 3D
 
+COMPILATION
+
+    make
+
 USAGE
 
     ./my_world [map]
