@@ -7,23 +7,22 @@
 
 #include "my_world.h"
 
-wd_game_t *init_default_map(wd_game_t *game)
+void init_default_map(wd_game_t *game)
 {
-    game->map->map = malloc(sizeof(int *) * (6 + 1));
-    for (int i = 0; i < 6; i++) {
-        game->map->map[i] = malloc(sizeof(int) * (6 + 1));
-        for (int j = 0; j < 6; j++)
+    game->map->map = my_memset(sizeof(int *) * (MAP_X + 1), NULL);
+    for (int i = 0; i < MAP_X; i++) {
+        game->map->map[i] = my_memset(sizeof(int) * (MAP_Y + 1), NULL);
+        for (int j = 0; j < MAP_Y; j++)
             game->map->map[i][j] = 0;
     }
-    game->map->map_text = malloc(sizeof(int *) * (5 + 1));
-    for (int i = 0; i < 5; i++) {
-        game->map->map_text[i] = malloc(sizeof(int) * (5 + 1));
-        for (int j = 0; j < 5; j++)
+    game->map->map_text = my_memset(sizeof(int *) * (MAP_X), NULL);
+    for (int i = 0; i < MAP_X - 1; i++) {
+        game->map->map_text[i] = my_memset(sizeof(int) * (MAP_Y), NULL);
+        for (int j = 0; j < MAP_Y - 1; j++)
             game->map->map_text[i][j] = 3;
     }
-    game->map->width = 6;
-    game->map->height = 6;
-    return game;
+    game->map->width = MAP_X;
+    game->map->height = MAP_Y;
 }
 
 wd_game_t *init_map(char **av, int ac, wd_game_t *game)
@@ -34,7 +33,7 @@ wd_game_t *init_map(char **av, int ac, wd_game_t *game)
         if ((game = parse_map(game, av[1])) == NULL)
             return NULL;
     } else
-        game = init_default_map(game);
+        init_default_map(game);
     game->map->fov = (game->map->width * game->map->height) * 2;
     game->map->points = my_memset(sizeof(sfVector2f *) *
             (game->map->width + 1), NULL);
